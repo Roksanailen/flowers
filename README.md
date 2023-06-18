@@ -19,4 +19,8 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 "# flower7" 
+<<<<<<< HEAD
 >>>>>>> 76af867 (first commit)
+=======
+"# flower7" 
+>>>>>>> d815079 (first commit)
