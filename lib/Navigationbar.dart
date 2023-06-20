@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appflowers/Markting_basket.dart';
-import 'package:flutter_appflowers/Myhome.dart';
-import 'package:flutter_appflowers/controller/bottom_navigation_controller.dart';
-import 'package:flutter_appflowers/profile.dart';
-import 'package:flutter_appflowers/Production.dart';
+import 'Markting_basket.dart';
+import 'Myhome.dart';
+import 'controller/bottom_navigation_controller.dart';
+import 'profile.dart';
+import 'Production.dart';
 import 'package:get/get.dart';
 class Navigationbar extends StatelessWidget {
   int index=0;
   BottomNavigationController bottomNavigationController=
   Get.put(BottomNavigationController());
   final Screens=[
-    Myhome(),
-    profile(),
-    Markting_basket(),
-    Production(),
+    const Myhome(),
+    const profile(),
+    const Markting_basket(),
+    const Production(),
   ];
 
   @override
@@ -43,7 +43,7 @@ class Navigationbar extends StatelessWidget {
                 bottomNavigationController.changIndex(index);
               },
 
-              items: [
+              items: const [
                 BottomNavigationBarItem(icon:Icon(Icons.home ,color: Color.fromRGBO(
                255, 205, 239, 1.0),),label: 'Myhome'
                 , backgroundColor: Colors.white70),

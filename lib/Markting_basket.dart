@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appflowers/Production.dart';
+import 'Production.dart';
 import 'package:get/get.dart';
 class Markting_basket extends StatelessWidget {
   const Markting_basket({Key? key}) : super(key: key);
@@ -7,10 +7,9 @@ class Markting_basket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color.fromRGBO(250, 210, 226, 0.9294117647058824),
          body: Column(
            children: [
-             SizedBox(
+          const SizedBox(
                height: 130,
                width: 130,
 
@@ -23,7 +22,7 @@ class Markting_basket extends StatelessWidget {
              width: 280,
     ),
           ),),
-             SizedBox(
+          const SizedBox(
                height: 75,
                width: 75,
 
@@ -31,11 +30,14 @@ class Markting_basket extends StatelessWidget {
              Container(
                child: InkWell
                  (onTap: (){
-                   Get.to(Production());
+                  Get.to(const Production());
                }
                  ,
 
-                   child: Text('Start shopping',style: TextStyle(fontSize: 20 ),)),
+                child: const Text(
+                  'Start shopping',
+                  style: TextStyle(fontSize: 20),
+                )),
              )
            ],
 

@@ -1,6 +1,4 @@
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appflowers/controller/Login.dart';
 
 
 class password extends StatelessWidget {
@@ -8,8 +6,7 @@ class password extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor:Color.fromRGBO(250, 210, 226, 0.9294117647058824),
+    return const Scaffold(
     );
   }
 }

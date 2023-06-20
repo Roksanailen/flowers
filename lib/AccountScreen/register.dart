@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 class registerscreen extends StatelessWidget {
   const registerscreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:Color.fromRGBO(250, 210, 226, 0.9294117647058824),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
@@ -22,7 +19,7 @@ class registerscreen extends StatelessWidget {
                    height: 40,
                  ),
                  TextFormField(
-                   decoration: InputDecoration(
+                   decoration: const InputDecoration(
                        filled: true,
                        fillColor: Colors.white,
                        border: OutlineInputBorder(),
@@ -36,7 +33,7 @@ class registerscreen extends StatelessWidget {
                    height: 20,
                  ),
                  TextFormField(
-                   decoration: InputDecoration(
+                   decoration: const InputDecoration(
                        filled: true,
                        fillColor: Colors.white,
                        border: OutlineInputBorder(),
@@ -50,7 +47,7 @@ class registerscreen extends StatelessWidget {
                    height: 20,
                  ),
                  TextFormField(
-                   decoration: InputDecoration(
+                   decoration: const InputDecoration(
                        filled: true,
                        fillColor: Colors.white,
                        border: OutlineInputBorder(),
@@ -64,7 +61,7 @@ class registerscreen extends StatelessWidget {
                    height: 20,
                  ),
                  TextFormField(
-                   decoration: InputDecoration(
+                   decoration: const InputDecoration(
                        filled: true,
                        fillColor: Colors.white,
                        border: OutlineInputBorder(),
@@ -77,7 +74,7 @@ class registerscreen extends StatelessWidget {
                    height: 20,
                  ),
                  TextFormField(
-                   decoration: InputDecoration(
+                   decoration: const InputDecoration(
                        filled: true,
                        fillColor: Colors.white,
                        border: OutlineInputBorder(),
@@ -87,7 +84,7 @@ class registerscreen extends StatelessWidget {
                    )
                    ),
                  ),
-                 SizedBox(
+                 const SizedBox(
                    height: 30,
                  ),
                  Center(

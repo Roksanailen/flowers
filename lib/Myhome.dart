@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_appflowers/AccountScreen/theme_service.dart';
-import 'package:flutter_appflowers/home_viewModel.dart';
-import 'package:get/get.dart';
+import 'AccountScreen/theme_service.dart';
 class Myhome extends StatelessWidget {
   const Myhome({Key? key}) : super(key: key);
 
@@ -23,10 +21,9 @@ class Myhome extends StatelessWidget {
            },
          )
        ],
-     ),
-        backgroundColor:Color.fromRGBO(250, 210, 226, 0.9294117647058824),
+        ),
       body: Container(
-        padding: EdgeInsets.only(top: 70,left: 20,right: 20),
+          padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
         child: Column(
           children: [Container(
             decoration: BoxDecoration(
@@ -34,7 +31,7 @@ class Myhome extends StatelessWidget {
               color: Colors.white,
             ),
             child: TextFormField(
-              decoration: InputDecoration(
+                decoration: const InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: Icon(Icons.search_rounded,color: Colors.black,),
               ),
