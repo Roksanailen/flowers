@@ -8,10 +8,6 @@
 .buildlog/
 .history
 .svn/
-<<<<<<< HEAD
-migrate_working_dir/
-=======
->>>>>>> 76af867 (first commit)
 
 # IntelliJ related
 *.iml
@@ -22,11 +18,7 @@ migrate_working_dir/
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
-<<<<<<< HEAD
 .vscode/
-=======
-#.vscode/
->>>>>>> 76af867 (first commit)
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -37,13 +29,9 @@ migrate_working_dir/
 .packages
 .pub-cache/
 .pub/
-<<<<<<< HEAD
 .fvm/
 /build/
 *.mocks.dart
-=======
-/build/
->>>>>>> 76af867 (first commit)
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -58,9 +46,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-<<<<<<< HEAD
 pubspec.lock
 *.lock 
 *.g.dart
-=======
->>>>>>> 76af867 (first commit)
+android/gradle/wrapper/gradle-wrapper.properties

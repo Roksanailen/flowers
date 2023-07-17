@@ -1,19 +1,22 @@
-// ignore_for_file: non_constant_identifier_names
-
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appflowers/Markting_basket.dart';
+import 'package:flutter_appflowers/controller/SelectedlistController.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:flutter_appflowers/main.dart';
+import 'package:flutter_appflowers/product.dart';
+import 'package:get/get.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_appflowers/details.dart';
 
-import 'Markting_basket.dart';
-import 'details.dart';
-
-
-class planets extends StatelessWidget {
-  planets({Key? key}) : super(key: key);
-  List <String> Color=["Dark Green","LightGreen"];
-  List <String> Kind=["Leopard","rubber","Darchinq","Bamboo","Zamia"];
-  List <String> associen =["blessing for work","blessing for home"];
+import 'draggable.dart';
+class Flowers extends StatelessWidget {
+  Flowers({Key? key}) : super(key: key);
+  List <String> Color=["yellow","Red" , "white ","pink","blue","purple"];
+  List <String> Kind=["tulip","roze","lily","calla"];
+  List <String> associen =["blessing","Newborn baby","Birthday","Valentine","graduation"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +24,9 @@ class planets extends StatelessWidget {
           actions: [
             IconButton(onPressed: () {},
                 icon: Icon(Icons.search, color: Colors.black87,)),
-            IconButton(onPressed: () {},
+            IconButton(onPressed: () {
+              Get.to(DraggableWidget());
+            },
                 icon: Icon(
                   Icons.shopping_cart_outlined, color: Colors.black87,)),
           ],
@@ -45,7 +50,7 @@ class planets extends StatelessWidget {
                           )
                           , child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [Text("Planets", style: TextStyle(
+                          children: [Text("Flowers", style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),),
@@ -191,32 +196,32 @@ class planets extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),                    ),
                       child: Column(
                         children: [
-                          Container(
-                            height: 200,
-                            width: 300
-                            , key: GlobalKey(),
-                            child: Image.asset('assets/images/planets.jpg',fit:BoxFit.fitWidth),
-                          ),
+                        Container(
+                          height: 200,
+                         width: 300
+                         , key: GlobalKey(),
+                          child: Image.asset('assets/images/offers.jpg',fit:BoxFit.fitWidth),
+                        ),
                           FittedBox(
-                            child: Row(                            children: [
-                              const SizedBox(height: 20),                              SizedBox(
-                                width: 50,
-                                child: Text(
-                                  'name',
-                                  softWrap: true,
-                                ),                              ),
-                              SizedBox(                                width: context.width * .3,
-                                child: Text(                                  // '1 Kg => ${state.ingredients[index].price}\$',
-                                  '{ingredient.priceBy} كجم => {ingredient.price} ل.س',
-                                  style: const TextStyle(color: Colors.black87),
-                                ),                              ),
-                              const SizedBox(height: 20),
-                              InkWell(child: IconButton(onPressed: (){
-                                Get.to(Markting_basket());
-                              }, icon: Icon(Icons.add)))],
-                            ),
+                          child: Row(                            children: [
+                            const SizedBox(height: 20),                              SizedBox(
+                              width: 50,
+                              child: Text(
+                              'name',
+                                softWrap: true,
+                            ),                              ),
+                            SizedBox(                                width: context.width * .3,
+                              child: Text(                                  // '1 Kg => ${state.ingredients[index].price}\$',
+                                '{ingredient.priceBy} كجم => {ingredient.price} ل.س',
+                                style: const TextStyle(color: Colors.black87),
+                              ),                              ),
+                            const SizedBox(height: 20),
+                          InkWell(child: IconButton(onPressed: (){
+                            Get.to(Markting_basket());
+                          }, icon: Icon(Icons.add)))],
                           ),
-                        ],                    ),
+                          ),
+                      ],                    ),
                     ),
                   );
                 },              ),
@@ -225,6 +230,20 @@ class planets extends StatelessWidget {
         )
     );
   }}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
