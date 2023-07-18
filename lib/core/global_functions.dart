@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../controller/Login.dart';
 
 class GlobalFunctions {
   //
@@ -139,11 +140,11 @@ class GlobalFunctions {
 
   //
   Future<void> setUserInfo({
-    required LoginModel user,
+    required User user,
     String? accessToken,
   }) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.setString('userInfo', user.toJson());
+    sp.setString('userInfo', user.toJson().toString());
     if (accessToken != null) sp.setString('accessToken', accessToken);
   }
   //
@@ -177,10 +178,13 @@ class GlobalFunctions {
   //   exit(0);
   // }
 
-
+  clearUserInfo() async {
+    SharedPreferences _sp = await SharedPreferences.getInstance();
+    _sp.remove('accessToken');
+    _sp.remove('userInfo');
+  }
   Future<bool> isAuth() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     return sp.containsKey('userInfo');
   }
-
 }

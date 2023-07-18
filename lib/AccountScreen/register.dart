@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-class registerscreen extends StatelessWidget {
-  const registerscreen({Key? key}) : super(key: key);
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
+import '../controller/register.dart';
+class registerscreen extends StatelessWidget {
+  RegisterController controller = Get.put(RegisterController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Obx(() =>Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
@@ -96,7 +100,9 @@ class registerscreen extends StatelessWidget {
                          style: ElevatedButton.styleFrom(
                            primary: Colors.white
                          ),
-                         onPressed: () {},
+                         onPressed: () {
+                           controller.register();
+                         },
                          child: Text('register',style: TextStyle(
                            fontSize: 20,color: Colors.black87
                          ),),
@@ -111,6 +117,7 @@ class registerscreen extends StatelessWidget {
 
              ),),
           ),
+    )
         );
 
   }

@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:http/http.dart' as http;
+
 import '../global_functions.dart';
 import 'handling_exception_request.dart';
 
@@ -25,14 +27,12 @@ class PostApi<T> with HandlingExceptionRequest {
   Future<T> callRequest() async {
     String? token = await GlobalFunctions().getToken();
 
-    // String fcmToken = await GlobalFunctions().getFCMToken();
     bool isAuth = await GlobalFunctions().isAuth();
 
     // log('the token in the request header is $token'.logWhite, name: 'request manager ==> post function ');
     try {
       var headers = {
         'Content-Type': 'application/json',
-        // 'fcm_token': fcmToken,
         'Accept': 'application/json',
         if (isAuth) 'Authorization': 'Bearer $token',
       };
