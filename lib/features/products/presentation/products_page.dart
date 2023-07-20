@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'jugs.dart';
-import 'planets.dart';
 import 'package:get/get.dart';
-import 'flowers.dart';
-import 'hand_pocket.dart';
-import 'gifts.dart';
+
+import '../../../flowers.dart';
+import '../../../gifts.dart';
+import '../../../hand_pocket.dart';
+import '../../../jugs.dart';
+import '../../../planets.dart';
 
 class Production extends StatefulWidget {
   const Production({Key? key}) : super(key: key);

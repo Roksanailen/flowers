@@ -5,7 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
 import 'features/cart/presentation/markting_basket.dart';
-import 'details.dart';
+import 'features/products/presentation/product_details.dart';
 
 class Gifts extends StatelessWidget {
   Gifts({Key? key}) : super(key: key);

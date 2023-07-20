@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import 'features/cart/presentation/markting_basket.dart';
-import 'details.dart';
+import 'features/products/presentation/product_details.dart';
 
 class jugs extends StatelessWidget {
   const jugs({Key? key}) : super(key: key);

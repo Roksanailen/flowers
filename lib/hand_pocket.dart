@@ -3,7 +3,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 
 import 'features/cart/presentation/markting_basket.dart';
-import 'details.dart';
+import 'features/products/presentation/product_details.dart';
 
 class handpocket extends StatelessWidget {
   const handpocket({Key? key}) : super(key: key);

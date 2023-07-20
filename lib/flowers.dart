@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'features/cart/presentation/markting_basket.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'details.dart';
 
 import 'draggable.dart';
+import 'features/products/presentation/product_details.dart';
 
 class FlowersScreen extends StatelessWidget {
   FlowersScreen({Key? key}) : super(key: key);
