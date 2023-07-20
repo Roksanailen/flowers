@@ -1,17 +1,20 @@
 
 
 import 'package:flutter/material.dart';
+import '../../../../core/global_functions.dart';
 import 'package:get/get.dart';
 
-import '../../../../Navigationbar.dart';
-class bodysplash extends StatefulWidget {
-  const bodysplash({Key? key}) : super(key: key);
+import '../../../auth_screens/presentation/login_screen.dart';
+import '../../../main_screen/presentation/main_screen.dart';
+
+class SplashWidget extends StatefulWidget {
+  const SplashWidget({Key? key}) : super(key: key);
 
   @override
-  State<bodysplash> createState() => _bodysplashState();
+  State<SplashWidget> createState() => _SplashWidgetState();
 }
 
-class _bodysplashState extends State<bodysplash> with SingleTickerProviderStateMixin{
+class _SplashWidgetState extends State<SplashWidget> with SingleTickerProviderStateMixin {
   AnimationController ? animationController;
   Animation <double>? fadingAnamation;
   
@@ -19,8 +22,8 @@ class _bodysplashState extends State<bodysplash> with SingleTickerProviderStateM
   void initState(){
   super.initState();
     animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
-  fadingAnamation=Tween<double>(begin: .2,end: 8).animate(animationController!);
+        vsync: this, duration: const Duration(milliseconds: 1500));
+    fadingAnamation = Tween<double>(begin: 0, end: 1).animate(animationController!);
   animationController?.repeat(reverse: true);
     goToNextView();
 }
@@ -31,35 +34,33 @@ class _bodysplashState extends State<bodysplash> with SingleTickerProviderStateM
   }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        children: [
-
-          const Spacer(),
-       FadeTransition(
-              opacity: fadingAnamation!,
-              child:
-              const Text(
-              'Flowers Market',
-              style: TextStyle(
-                fontSize: 41,
-                color: Color(0xffefebeb),
-                fontWeight: FontWeight.normal,
-              ),),
+    return Column(
+      children: [
+        const Spacer(),
+        FadeTransition(
+          opacity: fadingAnamation!,
+          child: const Text(
+            'Flowers Market',
+            style: TextStyle(
+              fontSize: 41,
+              color: Color(0xffefebeb),
+              fontWeight: FontWeight.normal,
             ),
+          ),
+        ),
 
-          const Spacer(),
-          Image.asset('assets/images/bs.jpg')
-          
-        ],
-      ),
+        const Spacer(),
+        Image.asset('assets/images/bs.jpg')
+      ],
     );
 
     }
 
   void goToNextView() {
-    Future.delayed(const Duration(seconds: 5), () {
-    Get.to(()=>Navigationbar(),transition: Transition.fade);});
+    Future.delayed(const Duration(seconds: 2), () async {
+      final isAuth = await GlobalFunctions().isAuth();
+      Get.to(() => !isAuth ? LoginScreen() : MainScreen(), transition: Transition.fade);
+    });
 }
 }
 

@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_appflowers/core/unified_api/api_variables.dart';
-import 'package:flutter_appflowers/core/unified_api/post_api.dart';
 import 'package:get/get.dart';
 
-import '../Production.dart';
-import '../core/global_functions.dart';
-import 'login_controller.dart';
+import '../../../core/global_functions.dart';
+import '../../../core/models/user_model.dart';
+import '../../../core/unified_api/api_variables.dart';
+import '../../../core/unified_api/post_api.dart';
+import '../../../production.dart';
 
 class RegisterController extends GetxController {
   final usernameController = TextEditingController().obs;

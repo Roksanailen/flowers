@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'AccountScreen/Login.dart';
 import 'package:get/get.dart';
 
-class profile extends StatelessWidget {
-  const profile({Key? key}) : super(key: key);
+import '../../auth_screens/presentation/login_screen.dart';
+
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +18,11 @@ class profile extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                Container(
-                  child: Image.asset(
-                    'assets/images/flower.jpg',
-                    fit: BoxFit.fitWidth,
-                    height: 300,
-                    width: 1000,
-                  ),
+                Image.asset(
+                  'assets/images/flower.jpg',
+                  fit: BoxFit.fitWidth,
+                  height: 300,
+                  width: 1000,
                 ),
                 const SizedBox(
                   height: 20,
@@ -41,10 +40,10 @@ class profile extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(login());
+                    Get.to(LoginScreen());
                   },
                   child: Container(
-margin: EdgeInsets.all(40),
+                    margin: EdgeInsets.all(40),
                     height: 40,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),

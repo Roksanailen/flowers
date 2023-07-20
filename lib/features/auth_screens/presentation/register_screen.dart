@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controller/register_controller.dart';
+import '../controllers/register_controller.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterController controller = Get.put(RegisterController());

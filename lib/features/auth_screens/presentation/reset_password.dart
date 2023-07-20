@@ -1,10 +1,7 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class ResetPasswordPage extends StatefulWidget {
-  ResetPasswordPage({Key? key}):
-      super(key: key);
+  const ResetPasswordPage({Key? key}) : super(key: key);
 
   @override
   State<ResetPasswordPage> createState() => _ResetPasswordPageState();
@@ -31,20 +28,22 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(margin: EdgeInsets.only(top: 200,right: 30),
-                  child: Text('Enter Email To Reset Password', style: TextStyle(
-                    fontWeight: FontWeight.bold,fontSize: 20
-                  ),)),
+              Container(
+                  margin: const EdgeInsets.only(top: 200, right: 30),
+                  child: const Text(
+                    'Enter Email To Reset Password',
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  )),
               const SizedBox(height: 20),
               Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    label: Text('email'),
+                    label: const Text('email'),
                     fillColor: Colors.white,
                     filled: true,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(30),
                     ),
                   ),
                   controller: _emailController,
@@ -62,15 +61,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               ),
               const SizedBox(height: 10),
               ElevatedButton(
-
                 style: ElevatedButton.styleFrom(
-                  side:BorderSide(style: BorderStyle.solid
-                  ,color: Colors.grey)
-               ,primary:Colors.white
+                    side: const BorderSide(style: BorderStyle.solid, color: Colors.grey), primary: Colors.white),
+                child: const Text(
+                  'Send Email',
+                  style: TextStyle(color: Colors.black87),
                 ),
-                child: Text('Send Email',style: TextStyle(
-                  color: Colors.black87
-                ),),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {}
                 },
@@ -82,4 +78,3 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
     );
   }
 }
-

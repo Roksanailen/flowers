@@ -1,5 +1,6 @@
-import '../home_viewModel.dart';
 import 'package:get/get.dart';
+
+import 'home_viewModel.dart';
 
 class binding extends Bindings{
   @override
@@ -8,4 +9,4 @@ class binding extends Bindings{
 
   }
 
- }
+}

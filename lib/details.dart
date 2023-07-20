@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:flutter_appflowers/Flowers.dart';
+import 'flowers.dart';
 class details extends StatelessWidget {
    details({Key? key}) : super(key: key);
 

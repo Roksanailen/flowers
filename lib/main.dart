@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'AccountScreen/theme_service.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get_storage/get_storage.dart';
-import 'features/splash/presentation/SplashView.dart';
+import 'core/theme_service.dart';
+import 'features/splash/presentation/splash_view.dart';
 
 void main() async {
   await GetStorage .init();

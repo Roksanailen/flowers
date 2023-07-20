@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:flutter_appflowers/Flowers.dart';
+import 'flowers.dart';
  class productConroller extends GetxController{
 
  }

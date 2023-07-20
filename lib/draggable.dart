@@ -141,7 +141,7 @@ onDragCompleted: () => print("Drag Completed"),
 
       /// If the Draggable is dropped onto the DragTarget and onWillAccept returns true, then onAccept is called.
       onAccept: (data) {
-        Scaffold.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Accepted!!'),
           backgroundColor: Colors.green,
           duration: Duration(seconds: 1),
@@ -150,7 +150,7 @@ onDragCompleted: () => print("Drag Completed"),
 
       /// If the Draggable is dropped onto the DragTarget and onWillAccept returns false, then onLeave is called.
       onLeave: (data) {
-        Scaffold.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Rejected!!'),
           backgroundColor: Colors.red,
           duration: Duration(seconds: 1),
