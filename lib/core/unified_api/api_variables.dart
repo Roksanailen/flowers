@@ -1,7 +1,5 @@
 import 'dart:developer';
 
-
-
 class ApiVariables {
   /////////////
   ///General///
@@ -25,7 +23,10 @@ class ApiVariables {
     log(uri.toString());
     return uri;
   }
-Uri login()=>_mainUri(path: 'auth/local');
-  Uri getAllProducts(params)=>_mainUri(path: 'flowers', queryParameters: params)
-  ;
+
+  Uri login() => _mainUri(path: 'auth/local');
+
+  Uri register() => _mainUri(path: 'auth/local/register');
+
+  Uri getAllProducts(params) => _mainUri(path: 'flowers', queryParameters: params);
 }

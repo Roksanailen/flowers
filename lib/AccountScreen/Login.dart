@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appflowers/Myhome.dart';
 import 'package:flutter_appflowers/Production.dart';
-import 'register.dart';
-import '../controller/Login.dart';
+import 'register_screen.dart';
+import '../controller/login_controller.dart';
 import '../password.dart';
 import 'package:get/get.dart';
 import 'package:flutter_appflowers/AccountScreen/changepassword.dart';
@@ -115,7 +115,7 @@ class login extends StatelessWidget {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.to(const registerscreen());
+                            Get.to(RegisterScreen());
                           },
                           child: const Text(
                             'register',
