@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_appflowers/features/auth_screens/requests/auth_requests.dart';
 import 'package:get/get.dart';
 
 import '../../../core/global_functions.dart';
@@ -15,24 +16,12 @@ class LoginController extends GetxController {
   bool isLoading = false;
   void login() async {
     isLoading = true;
-    final LoginModel? loginModel =
-        await LoginRequests().login(usernameController.value.text, passwordController.value.text);
-    if (loginModel != null) {
+    final result = await AuthRequests().login(usernameController.value.text, passwordController.value.text);
+    result.fold((l) {}, (loginModel) {
       GlobalFunctions().setUserInfo(user: loginModel.user!, accessToken: loginModel.jwt);
       isLoading = false;
       Get.offAll(MainScreen());
-    }
-    log(loginModel.toString(), name: 'omar');
-  }
-}
 
-class LoginRequests {
-  Future<LoginModel?> login(username, password) async {
-    PostApi postApi = PostApi(
-        uri: ApiVariables().login(),
-        body: {"identifier": username, "password": password},
-        fromJson: loginModelFromJson);
-    final LoginModel? result = await postApi.callRequest();
-    return result;
+    });
   }
 }
