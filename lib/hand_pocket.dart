@@ -43,7 +43,7 @@ class handpocket extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 "Hand pockets",
                                 style: TextStyle(

@@ -8,11 +8,11 @@ import 'features/splash/presentation/splash_view.dart';
 void main() async {
   await GetStorage .init();
 
-  runApp(const flowersMarket());
+  runApp(const FlowersMarket());
 }
 
-class flowersMarket extends StatelessWidget {
-  const flowersMarket({Key? key}) : super(key: key);
+class FlowersMarket extends StatelessWidget {
+  const FlowersMarket({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override

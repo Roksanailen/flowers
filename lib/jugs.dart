@@ -43,7 +43,7 @@ class jugs extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 "jugs",
                                 style: TextStyle(

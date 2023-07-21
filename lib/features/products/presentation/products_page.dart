@@ -129,7 +129,7 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                         child: ListTile(
                           leading: InkWell(
                               onTap: () {
-                                Get.to(planets());
+                                Get.to(Planets());
                               },
                               child: const Icon(
                                 Icons.arrow_forward_ios_outlined,

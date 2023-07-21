@@ -12,12 +12,16 @@ class LoginController extends GetxController {
   bool isLoading = false;
   void login() async {
     isLoading = true;
+    update();
     final result = await AuthRequests().login(usernameController.value.text, passwordController.value.text);
-    result.fold((l) {}, (loginModel) {
+    result.fold((l) {
+      isLoading = false;
+      update();
+    }, (loginModel) {
       GlobalFunctions().setUserInfo(user: loginModel.user!, accessToken: loginModel.jwt);
       isLoading = false;
+      update();
       Get.offAll(MainScreen());
-
     });
   }
 }

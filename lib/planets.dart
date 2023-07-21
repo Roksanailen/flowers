@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'features/cart/presentation/markting_basket.dart';
 import 'features/products/presentation/product_details.dart';
 
-class planets extends StatelessWidget {
-  planets({Key? key}) : super(key: key);
+class Planets extends StatelessWidget {
+  Planets({Key? key}) : super(key: key);
   List<String> Color = ["Dark Green", "LightGreen"];
   List<String> Kind = ["Leopard", "rubber", "Darchinq", "Bamboo", "Zamia"];
   List<String> associen = ["blessing for work", "blessing for home"];
@@ -47,7 +47,7 @@ class planets extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 "Planets",
                                 style: TextStyle(

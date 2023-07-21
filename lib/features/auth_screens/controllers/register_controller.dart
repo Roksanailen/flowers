@@ -13,18 +13,22 @@ class RegisterController extends GetxController {
   bool isLoading = false;
   void register() async {
     isLoading = true;
+    update();
     final result = await AuthRequests().register(
       username: usernameController.value.text,
       email: emailController.value.text,
       password: passwordController.value.text,
       phone: phoneController.value.text,
     );
-    result.fold((l) {}, (registerModel) {
+    result.fold((l) {
+      isLoading = false;
+
+      update();
+    }, (registerModel) {
       GlobalFunctions().setUserInfo(user: registerModel.user!, accessToken: registerModel.jwt);
       isLoading = false;
+      update();
       Get.offAll(MainScreen());
     });
-
-
   }
 }

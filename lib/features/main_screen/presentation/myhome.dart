@@ -1,3 +1,4 @@
+import 'package:flowers/core/global_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -26,6 +27,7 @@ class Myhome extends StatelessWidget {
               ),
               onPressed: () {
                 ThemeService.switchTheme();
+                GlobalFunctions().clearUserInfo();
               },
             )
           ],
@@ -40,8 +42,8 @@ class Myhome extends StatelessWidget {
               ),
               child: MainTextField(
                 controller: TextEditingController(),
-                  prefixIcon: const Icon(
-                    Icons.search_rounded,
+                prefixIcon: const Icon(
+                  Icons.search_rounded,
                   color: Colors.black,
                 ),
               ),

@@ -48,7 +48,7 @@ class FlowersScreen extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 "Flowers",
                                 style: TextStyle(

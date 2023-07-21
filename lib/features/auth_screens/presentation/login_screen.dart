@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/main_text_failed.dart';
 import '../controllers/login_controller.dart';
 import 'changepassword.dart';
@@ -12,7 +13,9 @@ class LoginScreen extends StatelessWidget {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
+    return GetBuilder<LoginController>(
+        init: controller,
+        builder: (controller1) => Scaffold(
           body: SafeArea(
             child: SingleChildScrollView(
               child: Padding(
@@ -47,10 +50,8 @@ class LoginScreen extends StatelessWidget {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           controller: controller.usernameController.value,
                           fillColor: Colors.white,
-                                borderRadius: BorderRadius.circular(30),
-                          label: 'Enter a username  ',
-                          hint: 'Enter a username  ',
-                            
+                              borderRadius: BorderRadius.circular(30),
+                              hint: 'Enter a username  ',
                           validator: (text) => text != null && text.length > 3 ? null : 'please add a valid username'),
                       const SizedBox(
                         height: 10,
@@ -66,6 +67,7 @@ class LoginScreen extends StatelessWidget {
                         height: 10,
                       ),
                       MainTextField(
+                            hint: 'Password',
                         controller: controller.passwordController.value,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         fillColor: Colors.white,
@@ -76,23 +78,22 @@ class LoginScreen extends StatelessWidget {
                         height: 30,
                       ),
                       Center(
-                        child: Center(
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(),
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                controller.login();
-                              }
-                            },
-                            child: const Text(
-                              'Login',
-                              style: TextStyle(
-                                color: Colors.black87,
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
+                            child: controller1.isLoading
+                                ? const CircularProgressIndicator.adaptive()
+                                : Center(
+                                    child: MainButton(
+                                      onTap: () {
+                                        if (formKey.currentState!.validate()) {
+                                          controller.login();
+                                        }
+                                      },
+                                      title: 'Login',
+                                      width: 80,
+                                      height: 40,
+                                      fontColor: Colors.black,
+                                      color: Colors.white,
+                                    ),
+                                  ),
                       ),
                       const SizedBox(
                         height: 15,

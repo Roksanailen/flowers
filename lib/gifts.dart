@@ -51,7 +51,7 @@ class Gifts extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
+                            children: [
                               Text(
                                 "Planets",
                                 style: TextStyle(
