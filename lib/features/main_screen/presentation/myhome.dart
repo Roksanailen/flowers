@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme_service.dart';
+import '../../../core/widgets/main_text_failed.dart';
 
 class Myhome extends StatelessWidget {
   const Myhome({Key? key}) : super(key: key);
@@ -37,13 +38,11 @@ class Myhome extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
               ),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Icon(
+              child: MainTextField(
+                controller: TextEditingController(),
+                  prefixIcon: const Icon(
                     Icons.search_rounded,
-                    color: Colors.black,
-                  ),
+                  color: Colors.black,
                 ),
               ),
             ),

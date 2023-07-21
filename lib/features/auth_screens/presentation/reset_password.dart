@@ -1,4 +1,7 @@
+import 'package:flowers/core/validation_extensions.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/widgets/main_text_failed.dart';
 
 class ResetPasswordPage extends StatefulWidget {
   const ResetPasswordPage({Key? key}) : super(key: key);
@@ -37,22 +40,14 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(20),
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    label: const Text('email'),
-                    fillColor: Colors.white,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
+                child: MainTextField(
+                  label: 'email',
+                  fillColor: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
                   controller: _emailController,
                   validator: (text) {
                     if (text != null &&
-                        RegExp(
-                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
-                          caseSensitive: false,
-                        ).hasMatch(text)) {
+                       text.isValidEmail()) {
                       return null;
                     }
                     return 'enter valid email';
@@ -62,7 +57,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               const SizedBox(height: 10),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    side: const BorderSide(style: BorderStyle.solid, color: Colors.grey), primary: Colors.white),
+                  side: const BorderSide(style: BorderStyle.solid, color: Colors.grey),
+                ),
                 child: const Text(
                   'Send Email',
                   style: TextStyle(color: Colors.black87),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/widgets/main_text_failed.dart';
 import '../../../flowers.dart';
 import '../../../gifts.dart';
 import '../../../hand_pocket.dart';
@@ -32,13 +33,11 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white,
               ),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Icon(
+              child: MainTextField(
+                controller: TextEditingController(),
+                prefixIcon: const Icon(
                     Icons.search_rounded,
                     color: Colors.black,
-                  ),
                 ),
               ),
             ),

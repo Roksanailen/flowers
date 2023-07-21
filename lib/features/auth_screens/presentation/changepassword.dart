@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/widgets/main_text_failed.dart';
 import 'reset_password.dart';
 
 class ChangePasswordPage extends StatefulWidget {
@@ -42,14 +43,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.all(20),
-                child: TextFormField(
+                child: MainTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    decoration: InputDecoration(
-                      label: const Text('confirm Password'),
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                      filled: true,
-                      fillColor: Colors.white,
-                    ),
+                    label: 'confirm Password',
+                    borderRadius: BorderRadius.circular(30),
+                    fillColor: Colors.white,
                     controller: _passwordController,
                     validator: (text) {
                       if (text != null && text.length > 8) {
@@ -60,16 +58,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               ),
               Container(
                 padding: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
-                child: TextFormField(
+                child: MainTextField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: InputDecoration(
-                    label: const Text('confirmPassword'),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
+                  label: 'confirmPassword',
+                  borderRadius: BorderRadius.circular(30),
+                  fillColor: Colors.white,
                   controller: _confirmPasswordController,
                   validator: (text) {
                     if (text != null && text == _passwordController.text) {
@@ -83,8 +76,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               const SizedBox(height: 10),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    side: const BorderSide(style: BorderStyle.solid, width: 1, color: Colors.grey),
-                    primary: Colors.white),
+                  side: const BorderSide(style: BorderStyle.solid, width: 1, color: Colors.grey),
+                ),
                 child: const Text(
                   'next',
                   style: TextStyle(color: Colors.black87),

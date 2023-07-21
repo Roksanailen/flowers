@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/main_text_failed.dart';
 import '../controllers/login_controller.dart';
 import 'changepassword.dart';
 import 'register_screen.dart';
@@ -42,19 +43,14 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      TextFormField(
+                      MainTextField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           controller: controller.usernameController.value,
-                          decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              border: OutlineInputBorder(
+                          fillColor: Colors.white,
                                 borderRadius: BorderRadius.circular(30),
-                              ),
-                              hintText: 'Enter a username  ',
-                              hintStyle: const TextStyle(
-                                color: Colors.black26,
-                              )),
+                          label: 'Enter a username  ',
+                          hint: 'Enter a username  ',
+                            
                           validator: (text) => text != null && text.length > 3 ? null : 'please add a valid username'),
                       const SizedBox(
                         height: 10,
@@ -69,19 +65,11 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      TextFormField(
+                      MainTextField(
                         controller: controller.passwordController.value,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            hintText: 'Enter a password',
-                            hintStyle: const TextStyle(
-                              color: Colors.black26,
-                            )),
+                        fillColor: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
                         validator: (text) => text != null && text.length > 6 ? null : 'please add a valid password',
                       ),
                       const SizedBox(
@@ -90,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                       Center(
                         child: Center(
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(primary: Colors.white),
+                            style: ElevatedButton.styleFrom(),
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 controller.login();

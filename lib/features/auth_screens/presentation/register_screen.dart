@@ -1,6 +1,8 @@
+import 'package:flowers/core/validation_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/widgets/main_text_failed.dart';
 import '../controllers/register_controller.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -25,82 +27,52 @@ class RegisterScreen extends StatelessWidget {
                       const SizedBox(
                         height: 30,
                       ),
-                      TextFormField(
+                      MainTextField(
                         controller: controller.usernameController.value,
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
+                        fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                            ),
-                            hintText: 'Enter your username',
-                            hintStyle: const TextStyle(
-                              color: Colors.black26,
-                            )),
+                        validator: (text) => text != null && text.length > 6 ? null : 'enter a valid username',  
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
+                      MainTextField(
                         controller: controller.emailController.value,
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
+                        fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                            ),
-                            hintText: 'Enter your email  ',
-                            hintStyle: const TextStyle(
-                              color: Colors.black26,
-                            )),
+                        validator: (email) =>
+                            email != null && email.isValidEmail() ? null : 'please enter a valid email',
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
+                      MainTextField(
                         controller: controller.phoneController.value,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          border: OutlineInputBorder(
+                        fillColor: Colors.white,
                             borderRadius: BorderRadius.circular(30),
-                          ),
-                          hintText: 'Enter your phone',
-                          hintStyle: const TextStyle(
-                            color: Colors.black26,
-                          ),
-                        ),
+                     
+                        validator: (text) => text != null && text.isValidPhone() ? null : 'please enter a valid phone',
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
-                          controller: controller.passwordController.value,
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
+                      MainTextField(
+                        controller: controller.passwordController.value,
+                        fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                            ),
-                            hintText: 'Enter your password ',
-                            hintStyle: const TextStyle(
-                              color: Colors.black26,
-                            ),
-                          )),
+                        validator: (text) =>
+                            text != null && text.isValidPassword() ? null : 'please enter a valid password',
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
-                      TextFormField(
-                        decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
+                      MainTextField(
+                        fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                            ),
-                            hintText: 'confirm password',
-                            hintStyle: const TextStyle(
-                              color: Colors.black26,
-                            )),
+                        controller: TextEditingController(),
+                        validator: (text) => text != null && text == controller.passwordController.value.text
+                            ? null
+                            : 'password isn\'t compatible',
                       ),
                       const SizedBox(
                         height: 30,
@@ -108,7 +80,7 @@ class RegisterScreen extends StatelessWidget {
                       Center(
                         child: Center(
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(primary: Colors.white),
+                            style: ElevatedButton.styleFrom(),
                             onPressed: () {
                               controller.register();
                             },
