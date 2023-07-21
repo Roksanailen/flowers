@@ -1,12 +1,8 @@
-import 'dart:developer';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_appflowers/features/auth_screens/requests/auth_requests.dart';
+import 'package:flowers/features/auth_screens/requests/auth_requests.dart';
 import 'package:get/get.dart';
 
 import '../../../core/global_functions.dart';
-import '../../../core/models/user_model.dart';
-import '../../../core/unified_api/api_variables.dart';
-import '../../../core/unified_api/post_api.dart';
 import '../../main_screen/presentation/main_screen.dart';
 
 class LoginController extends GetxController {

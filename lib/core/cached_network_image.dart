@@ -144,6 +144,7 @@ class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProv
             );
           },
         );}
+        return null;
       }
     );
   }

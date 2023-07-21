@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 class details extends StatelessWidget {
-   details({Key? key}) : super(key: key);
+   const details({Key? key}) : super(key: key);
 
   @override
   Widget  build(BuildContext context) {
@@ -12,7 +9,7 @@ class details extends StatelessWidget {
     body:SingleChildScrollView(
       child: Column(
       children: [
-        Container(
+        SizedBox(
           width: 220,
           child:  Image.asset('assets/images/planets.jpg'),
         ),
@@ -21,7 +18,7 @@ class details extends StatelessWidget {
               Container(
 
                 height: 450,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white54,
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(40),
@@ -34,9 +31,9 @@ class details extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(top: 50 ,left:40),
+                          padding:  const EdgeInsets.only(top: 50 ,left:40),
                           child: RichText(
-                           text:TextSpan(
+                           text:const TextSpan(
                              children: [
                                TextSpan(text: "Mint",style: TextStyle(color: Colors.black87,
                                    fontWeight: FontWeight.bold,fontSize:25)),
@@ -46,7 +43,7 @@ class details extends StatelessWidget {
                           ),
 
                         ),
-                        Padding(
+                        const Padding(
                           padding: EdgeInsets.only(top: 50 ,left:120),
                           child: Text(
                               'Price30\$',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
@@ -54,9 +51,9 @@ class details extends StatelessWidget {
                         )
                       ],
                     ),
-              SizedBox(height: 50),
-              Padding(
-                padding: const EdgeInsets.only(top: 100,left: 15,right: 10),
+              const SizedBox(height: 50),
+              const Padding(
+                padding: EdgeInsets.only(top: 100,left: 15,right: 10),
                 child: Text('MY NAME IS ROKSAN AND I LIVE IN AL Thowra city and i study it in aleppo ............................... ',style: TextStyle(
                   fontWeight: FontWeight.w600,fontSize: 15
                 ),),

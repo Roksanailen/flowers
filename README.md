@@ -2,7 +2,8 @@
 # flowers
 appstore for flowers
 =======
-# flutter_appflowers
+
+# flowers
 
 A new Flutter application.
 

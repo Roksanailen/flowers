@@ -34,7 +34,7 @@ class RegisterScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             hintText: 'Enter your username',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black26,
                             )),
                       ),
@@ -50,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             hintText: 'Enter your email  ',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black26,
                             )),
                       ),
@@ -66,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30),
                           ),
                           hintText: 'Enter your phone',
-                          hintStyle: TextStyle(
+                          hintStyle: const TextStyle(
                             color: Colors.black26,
                           ),
                         ),
@@ -83,7 +83,7 @@ class RegisterScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             hintText: 'Enter your password ',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black26,
                             ),
                           )),
@@ -98,7 +98,7 @@ class RegisterScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(30),
                             ),
                             hintText: 'confirm password',
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Colors.black26,
                             )),
                       ),
@@ -112,7 +112,7 @@ class RegisterScreen extends StatelessWidget {
                             onPressed: () {
                               controller.register();
                             },
-                            child: Text(
+                            child: const Text(
                               'register',
                               style: TextStyle(fontSize: 20, color: Colors.black87),
                             ),

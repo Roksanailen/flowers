@@ -36,7 +36,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 padding: const EdgeInsets.only(top: 200, right: 40),
                 child: const Text(
                   'Enter your New Password',
-                  style: const TextStyle(fontSize: 22, color: Colors.black87, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 22, color: Colors.black87, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 10),

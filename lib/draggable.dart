@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DraggableWidget extends StatefulWidget {
@@ -12,7 +11,7 @@ class _DraggableWidgetState extends State<DraggableWidget> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Draggable Widget',
           style: TextStyle(
               fontSize: 20.0,
@@ -55,8 +54,8 @@ child: Container(
 height: 100,
 width: 100,
 color: color,
-child: Padding(
-padding: const EdgeInsets.all(8.0),
+child: const Padding(
+padding: EdgeInsets.all(8.0),
 child: Center(
 child: Text(
 "Drag me to my color name",
@@ -70,8 +69,8 @@ feedback: Container(
 height: 100,
 width: 100,
 color: color,
-child: Padding(
-padding: const EdgeInsets.all(8.0),
+child: const Padding(
+padding: EdgeInsets.all(8.0),
 child: Center(
 /// Reason for adding Material widget here is that the
 /// text widget needs material theme otherwise it'll show
@@ -94,8 +93,8 @@ childWhenDragging: Container(
 height: 100,
 width: 100,
 color: Colors.grey,
-child: Padding(
-padding: const EdgeInsets.all(8.0),
+child: const Padding(
+padding: EdgeInsets.all(8.0),
 child: Center(
 child: Text(
 "Original place",
@@ -119,8 +118,8 @@ onDragCompleted: () => print("Drag Completed"),
           height: 100,
           width: 100,
           color: color,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Center(
               child: Text(
                 "Drag block here",
@@ -141,7 +140,7 @@ onDragCompleted: () => print("Drag Completed"),
 
       /// If the Draggable is dropped onto the DragTarget and onWillAccept returns true, then onAccept is called.
       onAccept: (data) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Accepted!!'),
           backgroundColor: Colors.green,
           duration: Duration(seconds: 1),
@@ -150,7 +149,7 @@ onDragCompleted: () => print("Drag Completed"),
 
       /// If the Draggable is dropped onto the DragTarget and onWillAccept returns false, then onLeave is called.
       onLeave: (data) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Rejected!!'),
           backgroundColor: Colors.red,
           duration: Duration(seconds: 1),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../controller/bottom_navigation_controller.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -17,8 +16,8 @@ class ThemeService {
   static final darkTheme = ThemeData(
       brightness: Brightness.dark,
       primaryColor: Colors.pinkAccent,
-      backgroundColor: Color.fromRGBO(114, 46, 73, 0.9294117647058824),
-      scaffoldBackgroundColor: Color.fromRGBO(175, 138, 155, 0.9294117647058824),
+      backgroundColor: const Color.fromRGBO(114, 46, 73, 0.9294117647058824),
+      scaffoldBackgroundColor: const Color.fromRGBO(175, 138, 155, 0.9294117647058824),
       appBarTheme: const AppBarTheme(color: Colors.purpleAccent),
       bottomNavigationBarTheme:
           const BottomNavigationBarThemeData(unselectedItemColor: Color.fromRGBO(175, 138, 155, 0.9294117647058824)));

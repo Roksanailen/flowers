@@ -32,7 +32,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   margin: const EdgeInsets.only(top: 200, right: 30),
                   child: const Text(
                     'Enter Email To Reset Password',
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )),
               const SizedBox(height: 20),
               Container(

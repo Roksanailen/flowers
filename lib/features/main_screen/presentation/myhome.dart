@@ -40,7 +40,7 @@ class Myhome extends StatelessWidget {
               child: TextFormField(
                 decoration: const InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.search_rounded,
                     color: Colors.black,
                   ),

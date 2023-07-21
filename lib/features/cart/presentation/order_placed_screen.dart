@@ -27,14 +27,14 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
                     color: Theme.of(context).scaffoldBackgroundColor.withOpacity(.3),
                   ),
                   child: Image.asset('assets/basket.png')),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text(
                   'Your Order Is Placed Successfully',
                 ),
               ),
               ElevatedButton(
-                  child: Text('Go To Home'),
+                  child: const Text('Go To Home'),
                   onPressed: () {
                     Get.offAll(MainScreen());
                   })

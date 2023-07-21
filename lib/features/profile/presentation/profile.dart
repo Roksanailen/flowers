@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                     Get.to(LoginScreen());
                   },
                   child: Container(
-                    margin: EdgeInsets.all(40),
+                    margin: const EdgeInsets.all(40),
                     height: 40,
                     decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),

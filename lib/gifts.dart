@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
 import 'features/cart/presentation/markting_basket.dart';
 import 'features/products/presentation/product_details.dart';
@@ -25,13 +23,13 @@ class Gifts extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   color: Colors.black87,
                 )),
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.shopping_cart_outlined,
                   color: Colors.black87,
                 )),
@@ -47,13 +45,13 @@ class Gifts extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          decoration: const BoxDecoration(
                             color: Colors.white10,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Text(
                                 "Planets",
                                 style: TextStyle(
@@ -65,7 +63,7 @@ class Gifts extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 50,
                       ),
                       Padding(
@@ -76,17 +74,17 @@ class Gifts extends StatelessWidget {
                               Get.bottomSheet(
                                 SingleChildScrollView(
                                   child: Container(
-                                    padding: EdgeInsets.all(10),
+                                    padding: const EdgeInsets.all(10),
                                     height: 1000,
                                     width: 1000,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         color: Colors.white70,
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(50), topRight: Radius.circular(50))),
                                     child: Column(
                                       children: [
-                                        Text("Color"),
-                                        SizedBox(height: 10),
+                                        const Text("Color"),
+                                        const SizedBox(height: 10),
                                         Container(width: 300, height: 7, color: Colors.pink[100]),
                                         SizedBox(
                                           height: 150,
@@ -94,11 +92,11 @@ class Gifts extends StatelessWidget {
                                             scrollDirection: Axis.horizontal,
                                             itemBuilder: (context, index) {
                                               return Container(
-                                                padding: EdgeInsets.all(10),
-                                                margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                                                padding: const EdgeInsets.all(10),
+                                                margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                                                 child: Text(
                                                   Color[index],
-                                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                                 ),
                                               );
                                             },
@@ -106,11 +104,11 @@ class Gifts extends StatelessWidget {
                                             shrinkWrap: true,
                                           ),
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 10,
                                         ),
-                                        Text("Kind"),
-                                        SizedBox(height: 10),
+                                        const Text("Kind"),
+                                        const SizedBox(height: 10),
                                         Container(width: 300, height: 7, color: Colors.pink[100]),
                                         SizedBox(
                                           height: 150,
@@ -118,11 +116,11 @@ class Gifts extends StatelessWidget {
                                             scrollDirection: Axis.horizontal,
                                             itemBuilder: (context, index) {
                                               return Container(
-                                                padding: EdgeInsets.all(10),
-                                                margin: EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                                                padding: const EdgeInsets.all(10),
+                                                margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                                                 child: Text(
                                                   Kind[index],
-                                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                                 ),
                                               );
                                             },
@@ -130,8 +128,8 @@ class Gifts extends StatelessWidget {
                                             shrinkWrap: true,
                                           ),
                                         ),
-                                        Text("associen"),
-                                        SizedBox(height: 10),
+                                        const Text("associen"),
+                                        const SizedBox(height: 10),
                                         Container(width: 300, height: 7, color: Colors.pink[100]),
                                         SizedBox(
                                           height: 200,
@@ -139,11 +137,11 @@ class Gifts extends StatelessWidget {
                                             scrollDirection: Axis.horizontal,
                                             itemBuilder: (context, index) {
                                               return Container(
-                                                padding: EdgeInsets.all(10),
-                                                margin: EdgeInsets.symmetric(horizontal: 30, vertical: 60),
+                                                padding: const EdgeInsets.all(10),
+                                                margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 60),
                                                 child: Text(
                                                   associen[index],
-                                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                                 ),
                                               );
                                             },
@@ -173,7 +171,7 @@ class Gifts extends StatelessWidget {
                 itemBuilder: (context, outerIndex) {
                   return InkWell(
                     onTap: () {
-                      Get.to(details());
+                      Get.to(const details());
                     },
                     child: Container(
                       // width: context.width * .5,
@@ -183,7 +181,7 @@ class Gifts extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: 300,
                             key: GlobalKey(),
@@ -193,7 +191,7 @@ class Gifts extends StatelessWidget {
                             child: Row(
                               children: [
                                 const SizedBox(height: 20),
-                                SizedBox(
+                                const SizedBox(
                                   width: 50,
                                   child: Text(
                                     'name',
@@ -202,19 +200,19 @@ class Gifts extends StatelessWidget {
                                 ),
                                 SizedBox(
                                   width: context.width * .3,
-                                  child: Text(
+                                  child: const Text(
                                     // '1 Kg => ${state.ingredients[index].price}\$',
                                     '{ingredient.priceBy} كجم => {ingredient.price} ل.س',
-                                    style: const TextStyle(color: Colors.black87),
+                                    style: TextStyle(color: Colors.black87),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
                                 InkWell(
                                     child: IconButton(
                                         onPressed: () {
-                                          Get.to(MarktingBasket());
+                                          Get.to(const MarktingBasket());
                                         },
-                                        icon: Icon(Icons.add)))
+                                        icon: const Icon(Icons.add)))
                               ],
                             ),
                           ),

@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_appflowers/core/unified_api/handling_exception_manager.dart';
+import 'package:flowers/core/unified_api/handling_exception_manager.dart';
 
 import '../../../core/error/failures.dart';
 import '../../../core/models/user_model.dart';

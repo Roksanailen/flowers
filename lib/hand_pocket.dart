@@ -15,13 +15,13 @@ class handpocket extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   color: Colors.black87,
                 )),
             IconButton(
                 onPressed: () {},
-                icon: Icon(
+                icon: const Icon(
                   Icons.shopping_cart_outlined,
                   color: Colors.black87,
                 )),
@@ -37,13 +37,13 @@ class handpocket extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                          decoration: BoxDecoration(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          decoration: const BoxDecoration(
                             color: Colors.white10,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
+                            children: const [
                               Text(
                                 "Hand pockets",
                                 style: TextStyle(
@@ -55,7 +55,7 @@ class handpocket extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 50,
                       ),
                     ],
@@ -73,7 +73,7 @@ class handpocket extends StatelessWidget {
                 itemBuilder: (context, outerIndex) {
                   return InkWell(
                     onTap: () {
-                      Get.to(details());
+                      Get.to(const details());
                     },
                     child: Container(
                       // width: context.width * .5,
@@ -83,7 +83,7 @@ class handpocket extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: 300,
                             key: GlobalKey(),
@@ -93,7 +93,7 @@ class handpocket extends StatelessWidget {
                             child: Row(
                               children: [
                                 const SizedBox(height: 20),
-                                SizedBox(
+                                const SizedBox(
                                   width: 50,
                                   child: Text(
                                     'name',
@@ -102,19 +102,19 @@ class handpocket extends StatelessWidget {
                                 ),
                                 SizedBox(
                                   width: context.width * .3,
-                                  child: Text(
+                                  child: const Text(
                                     // '1 Kg => ${state.ingredients[index].price}\$',
                                     '{ingredient.priceBy} كجم => {ingredient.price} ل.س',
-                                    style: const TextStyle(color: Colors.black87),
+                                    style: TextStyle(color: Colors.black87),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
                                 InkWell(
                                     child: IconButton(
                                         onPressed: () {
-                                          Get.to(MarktingBasket());
+                                          Get.to(const MarktingBasket());
                                         },
-                                        icon: Icon(Icons.add)))
+                                        icon: const Icon(Icons.add)))
                               ],
                             ),
                           ),

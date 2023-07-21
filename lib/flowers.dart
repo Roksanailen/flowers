@@ -48,8 +48,8 @@ class FlowersScreen extends StatelessWidget {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
+                            children: const [
+                              Text(
                                 "Flowers",
                                 style: TextStyle(
                                   fontSize: 20,
@@ -76,7 +76,7 @@ class FlowersScreen extends StatelessWidget {
                                     width: 1000,
                                     decoration: const BoxDecoration(
                                         color: Colors.white70,
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(50), topRight: Radius.circular(50))),
                                     child: Column(
                                       children: [
@@ -168,7 +168,7 @@ class FlowersScreen extends StatelessWidget {
                 itemBuilder: (context, outerIndex) {
                   return InkWell(
                     onTap: () {
-                      Get.to(details());
+                      Get.to(const details());
                     },
                     child: Container(
                       // width: context.width * .5,
@@ -178,7 +178,7 @@ class FlowersScreen extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          Container(
+                          SizedBox(
                             height: 200,
                             width: 300,
                             key: GlobalKey(),

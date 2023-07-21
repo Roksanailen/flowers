@@ -60,7 +60,7 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                     alignment: Alignment.center,
                     child: const Text(
                       'Flower',
-                      style: const TextStyle(fontSize: 16, color: Colors.black87),
+                      style: TextStyle(fontSize: 16, color: Colors.black87),
                     ),
                   ),
                   Container(
@@ -69,7 +69,7 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                     alignment: Alignment.center,
                     child: const Text(
                       'Planets',
-                      style: const TextStyle(fontSize: 14, color: Colors.black87),
+                      style: TextStyle(fontSize: 14, color: Colors.black87),
                     ),
                   ),
                   Container(
@@ -78,7 +78,7 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                     alignment: Alignment.center,
                     child: const Text(
                       'Gifts',
-                      style: const TextStyle(fontSize: 15, color: Colors.black87),
+                      style: TextStyle(fontSize: 15, color: Colors.black87),
                     ),
                   ),
                   Container(
@@ -87,7 +87,7 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                     alignment: Alignment.center,
                     child: const Text(
                       'Offers',
-                      style: const TextStyle(fontSize: 15, color: Colors.black87),
+                      style: TextStyle(fontSize: 15, color: Colors.black87),
                     ),
                   ),
                 ]),
