@@ -29,7 +29,7 @@ class ProductsRequests {
 
   Future<CategoriesResponseModel> getCategories(int id) async {
     GetApi getApi = GetApi(
-        uri: ApiVariables().getAllCategories(params: {'filters[type][id][eq]': '$id'}),
+        uri: ApiVariables().getAllCategories(params: {'filters[type][id][\$eq]': '$id'}),
         fromJson: categoriesResponseModelFromJson);
     final result = await getApi.callRequest();
     return result;

@@ -6,7 +6,7 @@ import '../../../core/models/user_model.dart';
 import '../../../core/unified_api/api_variables.dart';
 import '../../../core/unified_api/post_api.dart';
 
-class AuthRequests with HandlingExceptionManager {
+class AuthRepository with HandlingExceptionManager {
   Future<Either<Failure, LoginModel>> login(String username, String password) {
     return wrapHandling(tryCall: () async {
       return Right(await LoginRequests().login(username, password));
