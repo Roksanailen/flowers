@@ -12,7 +12,7 @@ class MainTextField extends StatefulWidget {
     this.validator,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.done,
-    this.isPassword = true,
+    this.isPassword = false,
     this.enabled = true,
     this.autoFocus = false,
     this.error = false,
@@ -61,13 +61,13 @@ class MainTextField extends StatefulWidget {
 class _MainTextFieldState extends State<MainTextField> with WidgetsBindingObserver {
   @override
   void didChangeDependencies() {
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
     super.didChangeDependencies();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance?.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
 
@@ -135,9 +135,9 @@ class _MainTextFieldState extends State<MainTextField> with WidgetsBindingObserv
           suffixIconConstraints: widget.smallSuffixIcon ? BoxConstraints(maxWidth: size.width * .15) : null,
           contentPadding: widget.maxLines != 1 ? null : const EdgeInsets.symmetric(horizontal: 16.0),
         ),
-        obscureText: !widget.isPassword,
-        enableSuggestions: widget.isPassword,
-        autocorrect: widget.isPassword,
+        obscureText: widget.isPassword,
+        enableSuggestions: !widget.isPassword,
+        autocorrect: !widget.isPassword,
         autovalidateMode: widget.autovalidateMode,
       ),
     );

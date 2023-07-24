@@ -1,34 +1,30 @@
+import 'package:bot_toast/bot_toast.dart';
+import 'package:flowers/dependency_injection.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get_storage/get_storage.dart';
-import 'core/theme_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'core/bloc/theme_service_bloc.dart';
 import 'features/splash/presentation/splash_view.dart';
 
 void main() async {
-  await GetStorage .init();
-
+  await init();
   runApp(const FlowersMarket());
 }
 
 class FlowersMarket extends StatelessWidget {
   const FlowersMarket({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: ThemeService.lightTheme,
-      darkTheme: ThemeService.darkTheme,
-      themeMode: ThemeService.theme,
-      debugShowCheckedModeBanner: false,
-      home: const SplashView(),
+    return BlocBuilder<ThemeServiceBloc, ThemeServiceState>(
+      bloc: serviceLocator<ThemeServiceBloc>()..add(InitThemeEvent()),
+      builder: (context, state) {
+        return MaterialApp(
+          builder: BotToastInit(),
+          theme: state.isDarkTheme ? ThemeService.darkTheme : ThemeService.lightTheme,
+          debugShowCheckedModeBanner: false,
+          home: const SplashView(),
+        );
+      },
     );
-
-
-
   }
-
-
-
 }

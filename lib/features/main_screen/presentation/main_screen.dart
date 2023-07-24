@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../controller/bottom_navigation_controller.dart';
 import '../../cart/presentation/markting_basket.dart';
 import '../../products/presentation/products_page.dart';
 import 'myhome.dart';
 
 class MainScreen extends StatelessWidget {
-  BottomNavigationController bottomNavigationController = Get.put(BottomNavigationController());
+  ValueNotifier<int> selectedIndex = ValueNotifier(0);
   final screens = [
     const Myhome(),
     const MarktingBasket(),
@@ -18,10 +16,11 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Scaffold(
+    return ValueListenableBuilder(
+      valueListenable: selectedIndex,
+      builder: (context, int value, _) => Scaffold(
         body: IndexedStack(
-          index: bottomNavigationController.selectedIndex.value,
+          index: value,
           children: screens,
         ),
         bottomNavigationBar: Builder(
@@ -34,9 +33,9 @@ class MainScreen extends StatelessWidget {
               unselectedItemColor: Colors.pink.shade100,
               showSelectedLabels: true,
               showUnselectedLabels: false,
-              currentIndex: bottomNavigationController.selectedIndex.value,
+              currentIndex: selectedIndex.value,
               onTap: (index) {
-                bottomNavigationController.changIndex(index);
+                selectedIndex.value = index;
               },
               items: const [
                 BottomNavigationBarItem(

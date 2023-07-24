@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import '../../../../core/global_functions.dart';
-import 'package:get/get.dart';
 
 import '../../../auth_screens/presentation/login_screen.dart';
 import '../../../main_screen/presentation/main_screen.dart';
@@ -59,7 +58,9 @@ class _SplashWidgetState extends State<SplashWidget> with SingleTickerProviderSt
   void goToNextView() {
     Future.delayed(const Duration(seconds: 2), () async {
       final isAuth = await GlobalFunctions().isAuth();
-      Get.to(() => !isAuth ? LoginScreen() : MainScreen(), transition: Transition.fade);
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return !isAuth ? LoginScreen() : MainScreen();
+      }));
     });
 }
 }

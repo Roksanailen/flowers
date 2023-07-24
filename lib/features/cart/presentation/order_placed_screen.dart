@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../main_screen/presentation/main_screen.dart';
-import 'package:get/get.dart';
 
 class OrderPlacedScreen extends StatefulWidget {
   const OrderPlacedScreen({Key? key}) : super(key: key);
@@ -36,7 +35,9 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
               ElevatedButton(
                   child: const Text('Go To Home'),
                   onPressed: () {
-                    Get.offAll(MainScreen());
+                    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {
+                      return MainScreen();
+                    }), (result) => false);
                   })
             ],
           ),

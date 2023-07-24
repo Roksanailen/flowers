@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../core/widgets/main_text_failed.dart';
 import 'reset_password.dart';
 
@@ -84,7 +83,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {}
-                  Get.to(const ResetPasswordPage());
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return const ResetPasswordPage();
+                  }));
                 },
               ),
             ],

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'features/cart/presentation/markting_basket.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:get/get.dart';
-
-import 'draggable.dart';
 import 'features/products/presentation/product_details.dart';
 
 class FlowersScreen extends StatelessWidget {
@@ -24,7 +21,7 @@ class FlowersScreen extends StatelessWidget {
                 )),
             IconButton(
                 onPressed: () {
-                  Get.to(DraggableWidget());
+                  // Get.to(DraggableWidget());
                 },
                 icon: const Icon(
                   Icons.shopping_cart_outlined,
@@ -68,7 +65,9 @@ class FlowersScreen extends StatelessWidget {
                           child: IconButton(
                             icon: const Icon(Icons.filter_alt_sharp),
                             onPressed: () {
-                              Get.bottomSheet(
+                              showBottomSheet(
+                                context: context,
+                                builder: (context) =>
                                 SingleChildScrollView(
                                   child: Container(
                                     padding: const EdgeInsets.all(10),
@@ -168,7 +167,9 @@ class FlowersScreen extends StatelessWidget {
                 itemBuilder: (context, outerIndex) {
                   return InkWell(
                     onTap: () {
-                      Get.to(const details());
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                        return const details();
+                      }));
                     },
                     child: Container(
                       // width: context.width * .5,
@@ -196,7 +197,7 @@ class FlowersScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(
-                                  width: context.width * .3,
+                                  width: 45,
                                   child: const Text(
                                     // '1 Kg => ${state.ingredients[index].price}\$',
                                     '{ingredient.priceBy} كجم => {ingredient.price} ل.س',
@@ -207,7 +208,9 @@ class FlowersScreen extends StatelessWidget {
                                 InkWell(
                                     child: IconButton(
                                         onPressed: () {
-                                          Get.to(const MarktingBasket());
+                                          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                            return const MarktingBasket();
+                                          }));
                                         },
                                         icon: const Icon(Icons.add)))
                               ],

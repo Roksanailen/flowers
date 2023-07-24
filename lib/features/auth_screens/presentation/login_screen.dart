@@ -1,23 +1,42 @@
+import 'package:flowers/core/global_functions.dart';
+import 'package:flowers/core/toaster.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/main_text_failed.dart';
-import '../controllers/login_controller.dart';
+import '../../main_screen/presentation/main_screen.dart';
+import '../bloc/auth_bloc.dart';
 import 'changepassword.dart';
 import 'register_screen.dart';
-import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginController controller = Get.put(LoginController());
-
   LoginScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
+  var passwordController = TextEditingController();
+  var usernameController = TextEditingController();
+  var authBloc = AuthBloc();
+  var isPassword = ValueNotifier(true);
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LoginController>(
-        init: controller,
-        builder: (controller1) => Scaffold(
-          body: SafeArea(
-            child: SingleChildScrollView(
+    return Scaffold(
+        body: SafeArea(
+      child: BlocProvider(
+        create: (context) => authBloc,
+        child: BlocConsumer<AuthBloc, AuthState>(
+          bloc: authBloc,
+          listener: (context, state) {
+            if (state.status == AuthStatus.loading) {
+              Toaster.showLoading();
+            } else if (state.status == AuthStatus.success) {
+              Toaster.closeLoading();
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
+            } else if (state.status == AuthStatus.failed) {
+              Toaster.closeLoading();
+              Toaster.showToast('حدث خطأ ما');
+            }
+          },
+          builder: (context, state) {
+            return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Form(
@@ -48,10 +67,10 @@ class LoginScreen extends StatelessWidget {
                       ),
                       MainTextField(
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          controller: controller.usernameController.value,
+                          controller: usernameController,
                           fillColor: Colors.white,
-                              borderRadius: BorderRadius.circular(30),
-                              hint: 'Enter a username  ',
+                          borderRadius: BorderRadius.circular(30),
+                          hint: 'Enter a username  ',
                           validator: (text) => text != null && text.length > 3 ? null : 'please add a valid username'),
                       const SizedBox(
                         height: 10,
@@ -66,34 +85,54 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      MainTextField(
+                      ValueListenableBuilder(
+                        valueListenable: isPassword,
+                        builder: (_, bool isPasswordValue, child) {
+                          return MainTextField(
                             hint: 'Password',
-                        controller: controller.passwordController.value,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        fillColor: Colors.white,
-                        borderRadius: BorderRadius.circular(30),
-                        validator: (text) => text != null && text.length > 6 ? null : 'please add a valid password',
+                            suffixIcon: GestureDetector(
+                              onTap: () {
+                                isPassword.value = !isPasswordValue;
+                              },
+                              child: AnimatedSwitcher(
+                                duration: const Duration(milliseconds: 500),
+                                child: isPasswordValue
+                                    ? const Icon(
+                                        Icons.visibility_off,
+                                        key: Key("show"),
+                                      )
+                                    : const Icon(
+                                        Icons.remove_red_eye,
+                                        key: Key("notShow"),
+                                      ),
+                              ),
+                            ),
+                            isPassword: isPasswordValue,
+                            controller: passwordController,
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            fillColor: Colors.white,
+                            borderRadius: BorderRadius.circular(30),
+                            validator: (text) => text != null && text.length > 6 ? null : 'please add a valid password',
+                          );
+                        },
                       ),
                       const SizedBox(
                         height: 30,
                       ),
                       Center(
-                            child: controller1.isLoading
-                                ? const CircularProgressIndicator.adaptive()
-                                : Center(
-                                    child: MainButton(
-                                      onTap: () {
-                                        if (formKey.currentState!.validate()) {
-                                          controller.login();
-                                        }
-                                      },
-                                      title: 'Login',
-                                      width: 80,
-                                      height: 40,
-                                      fontColor: Colors.black,
-                                      color: Colors.white,
-                                    ),
-                                  ),
+                        child: MainButton(
+                          onTap: () {
+                            if (formKey.currentState!.validate()) {
+                              authBloc.add(
+                                  LoginEvent(userName: usernameController.text, password: passwordController.text));
+                            }
+                          },
+                          title: 'Login',
+                          width: 80,
+                          height: 40,
+                          fontColor: Colors.black,
+                          color: Colors.white,
+                        ),
                       ),
                       const SizedBox(
                         height: 15,
@@ -107,7 +146,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.to(RegisterScreen());
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
                             },
                             child: const Text(
                               'register',
@@ -128,7 +167,9 @@ class LoginScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.to(const ChangePasswordPage());
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                return const ChangePasswordPage();
+                              }));
                             },
                             child: const Text(
                               'click here',
@@ -144,8 +185,10 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ),
-        ));
+            );
+          },
+        ),
+      ),
+    ));
   }
 }

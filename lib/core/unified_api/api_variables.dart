@@ -28,5 +28,7 @@ class ApiVariables {
 
   Uri register() => _mainUri(path: 'auth/local/register');
 
-  Uri getAllProducts(params) => _mainUri(path: 'flowers', queryParameters: params);
+  Uri getAllProducts({Map<String, String>? params}) => _mainUri(path: 'flowers', queryParameters: params);
+  Uri getAllTypes({Map<String, String>? params}) => _mainUri(path: 'types', queryParameters: params);
+  Uri getAllCategories({Map<String, String>? params}) => _mainUri(path: 'categories', queryParameters: params);
 }

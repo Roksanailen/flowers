@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'order_placed_screen.dart';
-import 'package:get/get.dart';
 
 class MarktingBasket extends StatelessWidget {
   const MarktingBasket({Key? key}) : super(key: key);
@@ -28,7 +27,7 @@ class MarktingBasket extends StatelessWidget {
           ),
           InkWell(
               onTap: () {
-                Get.to(const OrderPlacedScreen());
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const OrderPlacedScreen()));
               },
               child: const Text(
                 'Start shopping',

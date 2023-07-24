@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../auth_screens/presentation/login_screen.dart';
 
@@ -40,7 +39,9 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.to(LoginScreen());
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
+                      return LoginScreen();
+                    }));
                   },
                   child: Container(
                     margin: const EdgeInsets.all(40),

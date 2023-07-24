@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../core/widgets/main_text_failed.dart';
-import '../../../flowers.dart';
 import '../../../gifts.dart';
-import '../../../hand_pocket.dart';
-import '../../../jugs.dart';
-import '../../../planets.dart';
 
 class Production extends StatefulWidget {
   const Production({Key? key}) : super(key: key);
@@ -105,11 +100,8 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                             leading: InkWell(
                                 onTap: () {
                                   if (index == 0) {
-                                    Get.to(FlowersScreen());
                                   } else if (index == 1) {
-                                    Get.to(const handpocket());
                                   } else {
-                                    Get.to(const jugs());
                                   }
                                 },
                                 child: (const Icon(
@@ -129,7 +121,6 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                         child: ListTile(
                           leading: InkWell(
                               onTap: () {
-                                Get.to(Planets());
                               },
                               child: const Icon(
                                 Icons.arrow_forward_ios_outlined,
@@ -149,7 +140,7 @@ class _ProductionState extends State<Production> with TickerProviderStateMixin {
                         child: ListTile(
                           leading: InkWell(
                               onTap: () {
-                                Get.to(Gifts());
+                                
                               },
                               child: const Icon(
                                 Icons.arrow_forward_ios_outlined,

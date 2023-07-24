@@ -1,9 +1,10 @@
+import 'package:flowers/core/bloc/theme_service_bloc.dart';
 import 'package:flowers/core/global_functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/theme_service.dart';
 import '../../../core/widgets/main_text_failed.dart';
+import '../../../dependency_injection.dart';
 
 class Myhome extends StatelessWidget {
   const Myhome({Key? key}) : super(key: key);
@@ -26,8 +27,7 @@ class Myhome extends StatelessWidget {
                 color: Colors.black87,
               ),
               onPressed: () {
-                ThemeService.switchTheme();
-                GlobalFunctions().clearUserInfo();
+                serviceLocator<ThemeServiceBloc>().add(ChangeThemeEvent());
               },
             )
           ],

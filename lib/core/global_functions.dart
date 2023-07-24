@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'models/user_model.dart';
@@ -135,6 +136,18 @@ class GlobalFunctions {
   }
 
   //
+  Future<void> setTheme({
+    required bool isDarkMode,
+  }) async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.setBool('darkTheme', isDarkMode);
+  }
+
+  Future<bool> getTheme() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    return sp.getBool('darkTheme') ?? true;
+  }
+
   Future<void> setUserInfo({
     required User user,
     String? accessToken,
@@ -173,12 +186,16 @@ class GlobalFunctions {
   //   // RestartWidget.restartApp(context);
   //   exit(0);
   // }
+  getLoading(BuildContext context) {
+    showDialog(context: context, builder: (context) => CircularProgressIndicator.adaptive());
+  }
 
   clearUserInfo() async {
     SharedPreferences _sp = await SharedPreferences.getInstance();
     _sp.remove('accessToken');
     _sp.remove('userInfo');
   }
+
   Future<bool> isAuth() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     return sp.containsKey('userInfo');
