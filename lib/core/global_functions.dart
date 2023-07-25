@@ -145,7 +145,7 @@ class GlobalFunctions {
 
   Future<bool> getTheme() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    return sp.getBool('darkTheme') ?? true;
+    return sp.getBool('darkTheme') ?? false;
   }
 
   Future<void> setUserInfo({

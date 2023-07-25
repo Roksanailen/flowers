@@ -14,4 +14,9 @@ class GetCategoriesEvent extends ProductsEvent {
   });
 }
 
-class GetProductsEvent extends ProductsEvent {}
+class GetProductsEvent extends ProductsEvent {
+  final int categoryId;
+  GetProductsEvent({
+    required this.categoryId,
+  });
+}

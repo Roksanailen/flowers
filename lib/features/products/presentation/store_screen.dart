@@ -1,19 +1,19 @@
 import 'package:flowers/core/widgets/error_widget.dart';
+import 'package:flowers/features/products/presentation/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/widgets/main_text_failed.dart';
-import '../../../gifts.dart';
 import '../bloc/products_bloc.dart';
 
-class Production extends StatefulWidget {
-  const Production({Key? key}) : super(key: key);
+class StoreScreen extends StatefulWidget {
+  const StoreScreen({Key? key}) : super(key: key);
 
   @override
-  State<Production> createState() => _ProductionState();
+  State<StoreScreen> createState() => _StoreScreenState();
 }
 
-class _ProductionState extends State<Production> {
+class _StoreScreenState extends State<StoreScreen> {
   late ValueNotifier<int> _selectedCat;
   late ProductsBloc productsBloc;
   @override
@@ -79,7 +79,7 @@ class _ProductionState extends State<Production> {
                                         padding: const EdgeInsetsDirectional.only(end: 15),
                                         itemCount: state.types.length,
                                         itemBuilder: (context, index) {
-                                          return CategoryChoiceChip(
+                                          return TypeChoiceChip(
                                             title: state.types[index].name!,
                                             isActive: index == value,
                                             onTap: () {
@@ -113,6 +113,14 @@ class _ProductionState extends State<Production> {
                                               return Card(
                                                 margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
                                                 child: ListTile(
+                                                  onTap: () {
+                                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                                      return ProductsScreen(
+                                                        categoryId: state.categories[index].id!,
+                                                        categoryName: state.categories[index].attributes!.name!,
+                                                      );
+                                                    }));
+                                                  },
                                                   leading: const Icon(
                                                     Icons.arrow_forward_ios_outlined,
                                                     color: Colors.black,
@@ -131,8 +139,8 @@ class _ProductionState extends State<Production> {
   }
 }
 
-class CategoryChoiceChip extends StatelessWidget {
-  CategoryChoiceChip({
+class TypeChoiceChip extends StatelessWidget {
+  TypeChoiceChip({
     Key? key,
     required this.isActive,
     required this.title,

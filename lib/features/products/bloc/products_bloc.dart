@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flowers/features/products/requests/products_requests.dart';
 
 import '../../../core/models/categories_response_model.dart';
+import '../../../core/models/products_model.dart';
 import '../../../core/models/types_response_model.dart';
 
 part 'products_event.dart';
@@ -12,6 +13,16 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc() : super(ProductsState()) {
     on<GetTypesEvent>(_mapGetTypesEventToState);
     on<GetCategoriesEvent>(_mapGetCategoriesEventToState);
+    on<GetProductsEvent>(_mapGetProductsEventToState);
+  }
+
+  FutureOr<void> _mapGetProductsEventToState(event, emit) async {
+    emit(state.copyWith(getProductsStatus: GetProductsStatus.loading));
+    final result = await ProductsRepository().getProductsByCategory(event.categoryId);
+    result.fold((l) => emit(state.copyWith(getProductsStatus: GetProductsStatus.failed)),
+        (r) => emit(state.copyWith(getProductsStatus: GetProductsStatus.success, products: r.data!)));
+  
+
   }
 
   FutureOr<void> _mapGetCategoriesEventToState(event, emit) async {

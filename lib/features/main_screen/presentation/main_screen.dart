@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../cart/presentation/markting_basket.dart';
-import '../../products/presentation/products_page.dart';
+import '../../products/presentation/store_screen.dart';
 import 'myhome.dart';
 
 class MainScreen extends StatelessWidget {
@@ -9,7 +9,7 @@ class MainScreen extends StatelessWidget {
   final screens = [
     const Myhome(),
     const MarktingBasket(),
-    const Production(),
+    const StoreScreen(),
   ];
 
   MainScreen({Key? key}) : super(key: key);
