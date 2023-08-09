@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../cart/presentation/markting_basket.dart';
 import '../../products/presentation/store_screen.dart';
+import '../../profile/presentation/MainProfileScreen.dart';
+import '../../profile/presentation/profileEdit.dart';
 import 'myhome.dart';
 
 class MainScreen extends StatelessWidget {
@@ -10,6 +12,7 @@ class MainScreen extends StatelessWidget {
     const Myhome(),
     const MarktingBasket(),
     const StoreScreen(),
+    const MainProfileScreen(),
   ];
 
   MainScreen({Key? key}) : super(key: key);
@@ -52,6 +55,10 @@ class MainScreen extends StatelessWidget {
                 BottomNavigationBarItem(
                     icon: Icon(Icons.production_quantity_limits, color: Color.fromRGBO(253, 217, 244, 1.0)),
                     label: 'Production',
+                    backgroundColor: Colors.grey),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.person_rounded, color: Color.fromRGBO(253, 217, 244, 1.0)),
+                    label: 'Profile',
                     backgroundColor: Colors.grey),
               ],
             );
