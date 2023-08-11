@@ -122,7 +122,7 @@ class _CachedNetworkImageState extends State<CachedNetworkImage>
             ),
           ),
         );
-      } else if (state.extendedImageInfo == LoadState.completed) {
+      } else if (state.extendedImageLoadState == LoadState.completed) {
         return Builder(
           builder: (context) {
             if (widget.controller != null) {

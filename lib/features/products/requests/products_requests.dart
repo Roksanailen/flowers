@@ -55,7 +55,9 @@ class ProductsRequests {
           if (params.typeId != null)
             'filters[category][type][id][\$eq]': '${params.typeId}',
           if (params.isOffer!) 'filters[price_after_offer][\$ne]': 'null',
-          if (params.search != null) 'filters[name][\$contains]': params.search!
+          if (params.search != null)
+            'filters[name][\$contains]': params.search!,
+          if (params.localeCode != null) 'locale': params.localeCode!
         }),
         fromJson: productsResponseModelFromJson);
     final result = await getApi.callRequest();
@@ -64,10 +66,15 @@ class ProductsRequests {
 }
 
 class GetProductsParams {
+  final String? localeCode;
   final int? cagtegoryId;
   final int? typeId;
   final bool? isOffer;
   final String? search;
   GetProductsParams(
-      {this.cagtegoryId, this.typeId, this.isOffer = false, this.search});
+      {this.cagtegoryId,
+      this.typeId,
+      this.isOffer = false,
+      this.localeCode,
+      this.search});
 }

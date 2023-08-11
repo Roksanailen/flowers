@@ -18,7 +18,8 @@ class YesNoDialog extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Container(
         width: size.width * .5,
-        padding: EdgeInsets.symmetric(vertical: size.width * .1, horizontal: size.width * .075),
+        padding: EdgeInsets.symmetric(
+            vertical: size.width * .1, horizontal: size.width * .075),
         decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(15),
@@ -64,8 +65,8 @@ class YesNoDialog extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    onTapYes();
                     Navigator.of(context).pop();
+                    onTapYes();
                   },
                   child: Container(
                     width: size.width * .25,

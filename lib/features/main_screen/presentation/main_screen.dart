@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../cart/presentation/markting_basket.dart';
+import '../../cart/presentation/my_orders.dart';
 import '../../products/presentation/store_screen.dart';
 import '../../profile/presentation/main_profile_screen.dart';
-import '../../profile/presentation/profileEdit.dart';
 import 'myhome.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  late AppLocalizations appLocalizations;
   ValueNotifier<int> selectedIndex = ValueNotifier(0);
+
   final screens = [
     const Myhome(),
-    const MarktingBasket(),
+    const MyOrdersScreen(),
     const StoreScreen(),
     const MainProfileScreen(),
   ];
-
-  MainScreen({Key? key}) : super(key: key);
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,25 +52,28 @@ class MainScreen extends StatelessWidget {
               onTap: (index) {
                 selectedIndex.value = index;
               },
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.home,
                       color: Color.fromRGBO(255, 205, 239, 1.0),
                     ),
-                    label: 'Myhome',
+                    label: appLocalizations.myhome,
                     backgroundColor: Colors.grey),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.shopping_basket, color: Color.fromRGBO(255, 220, 244, 1.0)),
-                    label: 'Markting_basket',
+                    icon: const Icon(Icons.shopping_basket,
+                        color: Color.fromRGBO(255, 220, 244, 1.0)),
+                    label: appLocalizations.products,
                     backgroundColor: Colors.grey),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.production_quantity_limits, color: Color.fromRGBO(253, 217, 244, 1.0)),
-                    label: 'Production',
+                    icon: const Icon(Icons.production_quantity_limits,
+                        color: Color.fromRGBO(253, 217, 244, 1.0)),
+                    label: appLocalizations.myOrders,
                     backgroundColor: Colors.grey),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.person_rounded, color: Color.fromRGBO(253, 217, 244, 1.0)),
-                    label: 'Profile',
+                    icon: const Icon(Icons.person_rounded,
+                        color: Color.fromRGBO(253, 217, 244, 1.0)),
+                    label: appLocalizations.profile,
                     backgroundColor: Colors.grey),
               ],
             );

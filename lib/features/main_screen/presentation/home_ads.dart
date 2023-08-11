@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flowers/core/app_text_styles.dart';
 import 'package:flowers/core/models/products_model.dart';
 import 'package:flutter/material.dart';
 
@@ -77,6 +78,25 @@ class _HomeAdsListState extends State<HomeAdsList> {
                         ),
                       );
                     },
+                  ),
+                  Container(
+                    width: size.width,
+                    height: size.height * .3,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          8,
+                        ),
+                        gradient: const LinearGradient(
+                            colors: [Colors.black, Colors.transparent],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.center)),
+                    alignment: Alignment.bottomCenter,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Our Offers',
+                          style: AppTextStyles.normal(
+                              color: Colors.white, fontSize: 16)),
+                    ),
                   ),
                 ]
               ],

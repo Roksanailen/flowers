@@ -1,6 +1,7 @@
 import 'package:flowers/core/toaster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/main_text_failed.dart';
 import '../../main_screen/presentation/main_screen.dart';
@@ -70,6 +71,7 @@ class LoginScreen extends StatelessWidget {
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           controller: usernameController,
                           fillColor: Colors.white,
+                          textInputAction: TextInputAction.next,
                           borderRadius: BorderRadius.circular(30),
                           hint: 'Enter a username  ',
                           validator: (text) => text != null && text.length > 3
@@ -93,6 +95,12 @@ class LoginScreen extends StatelessWidget {
                         builder: (_, bool isPasswordValue, child) {
                           return MainTextField(
                             hint: 'Password',
+                            textInputAction: TextInputAction.go,
+                            onSubmitted: (value) {
+                              authBloc.add(LoginEvent(
+                                  userName: usernameController.text,
+                                  password: passwordController.text));
+                            },
                             suffixIcon: GestureDetector(
                               onTap: () {
                                 isPassword.value = !isPasswordValue;

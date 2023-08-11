@@ -1,8 +1,10 @@
+import 'package:flowers/core/bloc/language_bloc.dart';
 import 'package:flowers/features/main_screen/presentation/home_ads.dart';
 import 'package:flowers/features/main_screen/presentation/product_list_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/bloc/theme_service_bloc.dart';
@@ -10,8 +12,20 @@ import '../../../core/widgets/main_text_failed.dart';
 import '../../../dependency_injection.dart';
 import 'bloc/home_bloc.dart';
 
-class Myhome extends StatelessWidget {
+class Myhome extends StatefulWidget {
   const Myhome({Key? key}) : super(key: key);
+
+  @override
+  State<Myhome> createState() => _MyhomeState();
+}
+
+class _MyhomeState extends State<Myhome> {
+  late AppLocalizations appLocalizations;
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +47,12 @@ class Myhome extends StatelessWidget {
               onPressed: () {
                 serviceLocator<ThemeServiceBloc>().add(ChangeThemeEvent());
               },
-            )
+            ),
+            IconButton(
+                onPressed: () {
+                  serviceLocator<LanguageBloc>().add(ToggleLanguageEvent());
+                },
+                icon: const Icon(Icons.language_rounded))
           ],
         ),
         body: BlocConsumer<HomeBloc, HomeState>(
@@ -42,9 +61,7 @@ class Myhome extends StatelessWidget {
             ..add(GetHomeGiftsEvent())
             ..add(GetHomePlantsEvent())
             ..add(GetHomeOffersEvent()),
-          listener: (context, state) {
-            // TODO: implement listener
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             return Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
@@ -104,7 +121,8 @@ class Myhome extends StatelessWidget {
                               }),
                         ))
                     : ProductsHomeListWidget(
-                        products: List.of(state.flowers), title: 'new flowers'),
+                        products: List.of(state.flowers),
+                        title: appLocalizations.newFlowers),
                 state.getPlantsStatus == GetPlantsStatus.loading
                     ? Shimmer.fromColors(
                         baseColor: Colors.grey.shade300,
@@ -129,7 +147,8 @@ class Myhome extends StatelessWidget {
                               }),
                         ))
                     : ProductsHomeListWidget(
-                        products: List.of(state.plants), title: 'new plants'),
+                        products: List.of(state.plants),
+                        title: appLocalizations.newPlants),
                 state.getGiftsStatus == GetGiftsStatus.loading
                     ? Shimmer.fromColors(
                         baseColor: Colors.grey.shade300,
@@ -154,7 +173,8 @@ class Myhome extends StatelessWidget {
                               }),
                         ))
                     : ProductsHomeListWidget(
-                        products: List.of(state.gifts), title: 'new gifts')
+                        products: List.of(state.gifts),
+                        title: appLocalizations.newGifts)
               ]),
             );
           },

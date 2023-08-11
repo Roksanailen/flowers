@@ -1,4 +1,6 @@
 import 'package:flowers/core/global_functions.dart';
+import 'package:flowers/core/widgets/yes_no_dialog.dart';
+import 'package:flowers/features/splash/presentation/splash_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +26,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         children: [
           FutureBuilder<User>(
               future: GlobalFunctions().getUserInfo(),
-              builder: (context, snapshot) {
+              builder: (_, snapshot) {
                 if (snapshot.hasData) {
                   return Column(
                     children: [
@@ -73,6 +75,35 @@ class _ProfileEditState extends State<ProfileEdit> {
                           child: const Text(
                             'My Orders',
                             style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (_) => YesNoDialog(
+                                    size: MediaQuery.of(context).size,
+                                    title: 'Are You Sure?',
+                                    onTapYes: () {
+                                      GlobalFunctions().clearUserInfo();
+                                      Navigator.of(_).pushReplacement(
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  const SplashView()));
+                                    }));
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurple,
+                            padding: const EdgeInsets.all(15),
+                          ),
+                          child: const Text(
+                            'Log Out',
                           ),
                         ),
                       ),

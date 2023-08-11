@@ -1,6 +1,7 @@
 import 'package:flowers/core/models/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/widgets/cached_network_image.dart';
 import '../../products/presentation/product_details.dart';
@@ -20,8 +21,10 @@ class ProductsHomeListWidget extends StatefulWidget {
 }
 
 class _ProductsHomeListWidgetState extends State<ProductsHomeListWidget> {
+  late AppLocalizations appLocalizations;
   @override
   void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
     super.didChangeDependencies();
   }
 
@@ -48,12 +51,12 @@ class _ProductsHomeListWidgetState extends State<ProductsHomeListWidget> {
                     onTap: widget.onPressed,
                     child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            'more',
-                            style: TextStyle(),
+                            appLocalizations.more,
+                            style: const TextStyle(),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.arrow_forward_ios,
                             size: 12,
                           )
@@ -79,7 +82,9 @@ class _ProductsHomeListWidgetState extends State<ProductsHomeListWidget> {
                         onTap: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
-                            return const details();
+                            return ProductDetails(
+                              product: widget.products[index],
+                            );
                           }));
                         },
                         child: Container(
@@ -106,8 +111,8 @@ class _ProductsHomeListWidgetState extends State<ProductsHomeListWidget> {
                                               .products[index].image!.url!,
                                           hash: widget
                                               .products[index].image!.blurhash!,
-                                          width: 80,
-                                          height: 80),
+                                          width: 160,
+                                          height: 150),
                                     ),
                                   ],
                                 ),
@@ -132,24 +137,7 @@ class _ProductsHomeListWidgetState extends State<ProductsHomeListWidget> {
                                           children: [
                                             Text(
                                               widget.products[index].price!,
-                                              style: TextStyle(
-                                                  decoration: widget
-                                                              .products[index]
-                                                              .priceAfterOffer !=
-                                                          null
-                                                      ? TextDecoration
-                                                          .lineThrough
-                                                      : null),
                                             ),
-                                            if (widget.products[index]
-                                                    .priceAfterOffer !=
-                                                null)
-                                              Text(
-                                                widget.products[index]
-                                                    .priceAfterOffer!,
-                                                style: const TextStyle(
-                                                    color: Colors.green),
-                                              ),
                                           ],
                                         ),
                                       ),

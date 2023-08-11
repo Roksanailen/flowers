@@ -3,9 +3,10 @@ import 'package:flowers/core/widgets/error_widget.dart';
 import 'package:flowers/features/products/requests/products_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../cart/presentation/markting_basket.dart';
+import '../../cart/presentation/my_orders.dart';
 import '../bloc/products_bloc.dart';
 import 'product_details.dart';
 
@@ -40,13 +41,21 @@ class _ProductsScreenState extends State<ProductsScreen> {
     "graduation"
   ];
   late final ProductsBloc productsBloc;
-
+  late AppLocalizations appLocalizations;
   @override
   void initState() {
-    productsBloc = ProductsBloc()
-      ..add(GetProductsEvent(
-          params: GetProductsParams(cagtegoryId: widget.categoryId)));
+    productsBloc = ProductsBloc();
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    productsBloc.add(GetProductsEvent(
+        params: GetProductsParams(
+            cagtegoryId: widget.categoryId,
+            localeCode: appLocalizations.localeName)));
+    super.didChangeDependencies();
   }
 
   @override
@@ -270,7 +279,9 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                     onTap: () {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(builder: (context) {
-                                        return const details();
+                                        return ProductDetails(
+                                          product: state.products[index],
+                                        );
                                       }));
                                     },
                                     child: Container(
@@ -290,8 +301,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                 hash: state.products[index]
                                                     .image!.blurhash!,
                                                 fit: BoxFit.cover,
-                                                width: 80,
-                                                height: 80),
+                                                width: 300,
+                                                height: 175),
                                           ),
                                           FittedBox(
                                             child: Row(
@@ -337,7 +348,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                               MaterialPageRoute(
                                                                   builder:
                                                                       (context) {
-                                                            return const MarktingBasket();
+                                                            return const MyOrdersScreen();
                                                           }));
                                                         },
                                                         icon: const Icon(

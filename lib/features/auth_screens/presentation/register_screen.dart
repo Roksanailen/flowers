@@ -17,6 +17,7 @@ class RegisterScreen extends StatelessWidget {
     var phoneController = TextEditingController();
     var emailController = TextEditingController();
     var usernameController = TextEditingController();
+    var confirmPassowrdController = TextEditingController();
     var isPassword = ValueNotifier(true);
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +33,8 @@ class RegisterScreen extends StatelessWidget {
               Toaster.showLoading();
             } else if (state.status == AuthStatus.success) {
               Toaster.closeLoading();
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const MainScreen()));
             } else if (state.status == AuthStatus.failed) {
               Toaster.closeLoading();
               Toaster.showToast('حدث خطأ ما');
@@ -41,7 +43,8 @@ class RegisterScreen extends StatelessWidget {
           builder: (context, state) {
             return SingleChildScrollView(
               child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Form(
                     key: formKey,
                     child: Column(
@@ -51,7 +54,8 @@ class RegisterScreen extends StatelessWidget {
                           alignment: Alignment.center,
                           child: const Text(
                             'Register a new account',
-                            style: TextStyle(fontSize: 25, color: Colors.black87),
+                            style:
+                                TextStyle(fontSize: 25, color: Colors.black87),
                           ),
                         ),
                         const SizedBox(
@@ -62,7 +66,9 @@ class RegisterScreen extends StatelessWidget {
                           fillColor: Colors.white,
                           hint: 'UserName',
                           borderRadius: BorderRadius.circular(30),
-                          validator: (text) => text != null && text.length > 3 ? null : 'enter a valid username',
+                          validator: (text) => text != null && text.length > 3
+                              ? null
+                              : 'enter a valid username',
                         ),
                         const SizedBox(
                           height: 20,
@@ -73,7 +79,9 @@ class RegisterScreen extends StatelessWidget {
                           fillColor: Colors.white,
                           borderRadius: BorderRadius.circular(30),
                           validator: (email) =>
-                              email != null && email.isValidEmail() ? null : 'please enter a valid email',
+                              email != null && email.isValidEmail()
+                                  ? null
+                                  : 'please enter a valid email',
                         ),
                         const SizedBox(
                           height: 20,
@@ -84,7 +92,9 @@ class RegisterScreen extends StatelessWidget {
                           hint: 'Phone Number',
                           borderRadius: BorderRadius.circular(30),
                           validator: (text) =>
-                              text != null && text.isValidPhone() ? null : 'please enter a valid phone',
+                              text != null && text.isValidPhone()
+                                  ? null
+                                  : 'please enter a valid phone',
                         ),
                         const SizedBox(
                           height: 20,
@@ -113,11 +123,14 @@ class RegisterScreen extends StatelessWidget {
                               ),
                               isPassword: isPasswordValue,
                               controller: passwordController,
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
                               validator: (text) =>
-                                  text != null && text.length > 6 ? null : 'please add a valid password',
+                                  text != null && text.length > 6
+                                      ? null
+                                      : 'please add a valid password',
                             );
                           },
                         ),
@@ -147,12 +160,15 @@ class RegisterScreen extends StatelessWidget {
                                 ),
                               ),
                               isPassword: isPasswordValue,
-                              controller: TextEditingController(),
-                              autovalidateMode: AutovalidateMode.onUserInteraction,
+                              controller: confirmPassowrdController,
+                              autovalidateMode:
+                                  AutovalidateMode.onUserInteraction,
                               fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                              validator: (text) =>
-                                  text != null && text == (passwordController.text) ? null : 'passwords isn\'t matched',
+                              validator: (text) => text != null &&
+                                      text == (passwordController.text)
+                                  ? null
+                                  : 'passwords isn\'t matched',
                             );
                           },
                         ),
