@@ -3,20 +3,19 @@ import 'package:flowers/features/profile/presentation/profile.dart';
 import 'package:flowers/features/profile/presentation/profileEdit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 class MainProfileScreen extends StatelessWidget {
   const MainProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+    return FutureBuilder<bool>(
       future: GlobalFunctions().isAuth(),
       builder: (context ,  snapshot) {
-      if (snapshot==false)
+      if (snapshot.data??true)
     {
-        return profileEdit();
+        return const ProfileEdit();
   }else
-    {return  ProfileScreen();}}
+    {return  const ProfileScreen();}}
     );
   }
   }

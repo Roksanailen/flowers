@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:flowers/features/products/requests/products_requests.dart';
 
@@ -16,27 +17,37 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     on<GetProductsEvent>(_mapGetProductsEventToState);
   }
 
-  FutureOr<void> _mapGetProductsEventToState(event, emit) async {
+  FutureOr<void> _mapGetProductsEventToState(
+      GetProductsEvent event, emit) async {
     emit(state.copyWith(getProductsStatus: GetProductsStatus.loading));
-    final result = await ProductsRepository().getProductsByCategory(event.categoryId);
-    result.fold((l) => emit(state.copyWith(getProductsStatus: GetProductsStatus.failed)),
-        (r) => emit(state.copyWith(getProductsStatus: GetProductsStatus.success, products: r.data!)));
-  
-
+    final result =
+        await ProductsRepository().getProductsByCategory(event.params);
+    result.fold(
+        (l) =>
+            emit(state.copyWith(getProductsStatus: GetProductsStatus.failed)),
+        (r) => emit(state.copyWith(
+            getProductsStatus: GetProductsStatus.success, products: r.data!)));
   }
 
   FutureOr<void> _mapGetCategoriesEventToState(event, emit) async {
     emit(state.copyWith(getCategoriesStatus: GetCategoriesStatus.loading));
     final result = await ProductsRepository().getCategories(event.typeId);
-    result.fold((l) => emit(state.copyWith(getCategoriesStatus: GetCategoriesStatus.failed)),
-        (r) => emit(state.copyWith(getCategoriesStatus: GetCategoriesStatus.success, categories: r.data!)));
+    result.fold(
+        (l) => emit(
+            state.copyWith(getCategoriesStatus: GetCategoriesStatus.failed)),
+        (r) => emit(state.copyWith(
+            getCategoriesStatus: GetCategoriesStatus.success,
+            categories: r.data!)));
   }
 
   FutureOr<void> _mapGetTypesEventToState(event, emit) async {
     emit(state.copyWith(getTypesStatus: GetTypesStatus.loading));
     final result = await ProductsRepository().getTypes();
-    result.fold((l) => emit(state.copyWith(getTypesStatus: GetTypesStatus.failed)), (r) {
-      emit(state.copyWith(getTypesStatus: GetTypesStatus.success, types: r.data!));
+    result.fold(
+        (l) => emit(state.copyWith(getTypesStatus: GetTypesStatus.failed)),
+        (r) {
+      emit(state.copyWith(
+          getTypesStatus: GetTypesStatus.success, types: r.data!));
       emit(state.copyWith(getTypesStatus: GetTypesStatus.init));
     });
   }

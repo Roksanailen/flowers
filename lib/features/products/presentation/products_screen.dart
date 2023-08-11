@@ -1,14 +1,18 @@
 import 'package:flowers/core/widgets/cached_network_image.dart';
 import 'package:flowers/core/widgets/error_widget.dart';
+import 'package:flowers/features/products/requests/products_requests.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../cart/presentation/markting_basket.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+import '../../cart/presentation/markting_basket.dart';
 import '../bloc/products_bloc.dart';
 import 'product_details.dart';
 
 class ProductsScreen extends StatefulWidget {
-  ProductsScreen({Key? key, required this.categoryId, required this.categoryName}) : super(key: key);
+  const ProductsScreen(
+      {Key? key, required this.categoryId, required this.categoryName})
+      : super(key: key);
   final String categoryName;
   final int categoryId;
 
@@ -17,16 +21,31 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  final List<String> color = ["yellow", "Red", "white ", "pink", "blue", "purple"];
+  final List<String> color = [
+    "yellow",
+    "Red",
+    "white ",
+    "pink",
+    "blue",
+    "purple"
+  ];
 
   final List<String> kind = ["tulip", "roze", "lily", "calla"];
 
-  final List<String> occasion = ["blessing", "Newborn baby", "Birthday", "Valentine", "graduation"];
+  final List<String> occasion = [
+    "blessing",
+    "Newborn baby",
+    "Birthday",
+    "Valentine",
+    "graduation"
+  ];
   late final ProductsBloc productsBloc;
 
   @override
   void initState() {
-    productsBloc = ProductsBloc()..add(GetProductsEvent(categoryId: widget.categoryId));
+    productsBloc = ProductsBloc()
+      ..add(GetProductsEvent(
+          params: GetProductsParams(cagtegoryId: widget.categoryId)));
     super.initState();
   }
 
@@ -67,12 +86,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           children: [
                             Expanded(
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16, vertical: 10),
                                 decoration: const BoxDecoration(
                                   color: Colors.white10,
                                 ),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       'Category: ' + widget.categoryName,
@@ -95,7 +116,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   onPressed: () {
                                     showBottomSheet(
                                       context: context,
-                                      builder: (context) => SingleChildScrollView(
+                                      builder: (context) =>
+                                          SingleChildScrollView(
                                         child: Container(
                                           padding: const EdgeInsets.all(10),
                                           height: 1000,
@@ -103,23 +125,38 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                           decoration: const BoxDecoration(
                                               color: Colors.white70,
                                               borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(50), topRight: Radius.circular(50))),
+                                                  topLeft: Radius.circular(50),
+                                                  topRight:
+                                                      Radius.circular(50))),
                                           child: Column(
                                             children: [
                                               const Text("Color"),
                                               const SizedBox(height: 10),
-                                              Container(width: 300, height: 7, color: Colors.pink[100]),
+                                              Container(
+                                                  width: 300,
+                                                  height: 7,
+                                                  color: Colors.pink[100]),
                                               SizedBox(
                                                 height: 150,
                                                 child: ListView.builder(
-                                                  scrollDirection: Axis.horizontal,
-                                                  itemBuilder: (context, index) {
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     return Container(
-                                                      padding: const EdgeInsets.all(10),
-                                                      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10),
+                                                      margin: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 30,
+                                                          vertical: 10),
                                                       child: Text(
                                                         color[index],
-                                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     );
                                                   },
@@ -132,18 +169,31 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                               ),
                                               const Text("Kind"),
                                               const SizedBox(height: 10),
-                                              Container(width: 300, height: 7, color: Colors.pink[100]),
+                                              Container(
+                                                  width: 300,
+                                                  height: 7,
+                                                  color: Colors.pink[100]),
                                               SizedBox(
                                                 height: 150,
                                                 child: ListView.builder(
-                                                  scrollDirection: Axis.horizontal,
-                                                  itemBuilder: (context, index) {
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     return Container(
-                                                      padding: const EdgeInsets.all(10),
-                                                      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10),
+                                                      margin: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 30,
+                                                          vertical: 10),
                                                       child: Text(
                                                         kind[index],
-                                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     );
                                                   },
@@ -153,18 +203,31 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                               ),
                                               const Text("associen"),
                                               const SizedBox(height: 10),
-                                              Container(width: 300, height: 7, color: Colors.pink[100]),
+                                              Container(
+                                                  width: 300,
+                                                  height: 7,
+                                                  color: Colors.pink[100]),
                                               SizedBox(
                                                 height: 200,
                                                 child: ListView.builder(
-                                                  scrollDirection: Axis.horizontal,
-                                                  itemBuilder: (context, index) {
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemBuilder:
+                                                      (context, index) {
                                                     return Container(
-                                                      padding: const EdgeInsets.all(10),
-                                                      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 60),
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              10),
+                                                      margin: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 30,
+                                                          vertical: 60),
                                                       child: Text(
                                                         occasion[index],
-                                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
                                                       ),
                                                     );
                                                   },
@@ -190,11 +253,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         : state.getProductsStatus == GetProductsStatus.failed
                             ? Center(child: MainErrorWidget(
                                 onTap: () {
-                                  productsBloc.add(GetProductsEvent(categoryId: widget.categoryId));
+                                  productsBloc.add(GetProductsEvent(
+                                      params: GetProductsParams(
+                                          cagtegoryId: widget.categoryId)));
                                 },
                               ))
                             : MasonryGridView.count(
-                                padding: const EdgeInsets.symmetric(horizontal: 10),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 20,
                                 mainAxisSpacing: 10.0,
@@ -202,7 +268,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                 itemBuilder: (context, index) {
                                   return InkWell(
                                     onTap: () {
-                                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context) {
                                         return const details();
                                       }));
                                     },
@@ -218,8 +285,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                             height: 175,
                                             width: 300,
                                             child: CachedNetworkImage(
-                                                url: state.products[index].image!.url!,
-                                                hash: state.products[index].image!.blurhash!,
+                                                url: state.products[index]
+                                                    .image!.url!,
+                                                hash: state.products[index]
+                                                    .image!.blurhash!,
                                                 fit: BoxFit.cover,
                                                 width: 80,
                                                 height: 80),
@@ -240,13 +309,22 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                   child: Column(
                                                     children: [
                                                       Text(
-                                                        state.products[index].price!,
-                                                        style: TextStyle(color: Colors.black87),
+                                                        state.products[index]
+                                                            .price!,
+                                                        style: const TextStyle(
+                                                            color:
+                                                                Colors.black87),
                                                       ),
-                                                      if (state.products[index].priceAfterOffer != null)
+                                                      if (state.products[index]
+                                                              .priceAfterOffer !=
+                                                          null)
                                                         Text(
-                                                          state.products[index].priceAfterOffer!,
-                                                          style: TextStyle(color: Colors.green),
+                                                          state.products[index]
+                                                              .priceAfterOffer!,
+                                                          style:
+                                                              const TextStyle(
+                                                                  color: Colors
+                                                                      .green),
                                                         ),
                                                     ],
                                                   ),
@@ -255,12 +333,15 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                 InkWell(
                                                     child: IconButton(
                                                         onPressed: () {
-                                                          Navigator.of(context)
-                                                              .push(MaterialPageRoute(builder: (context) {
+                                                          Navigator.of(context).push(
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) {
                                                             return const MarktingBasket();
                                                           }));
                                                         },
-                                                        icon: const Icon(Icons.add)))
+                                                        icon: const Icon(
+                                                            Icons.add)))
                                               ],
                                             ),
                                           ),

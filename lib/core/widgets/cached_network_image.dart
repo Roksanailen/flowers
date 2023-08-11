@@ -48,20 +48,20 @@ class CachedNetworkImage extends StatefulWidget {
   State<CachedNetworkImage> createState() => _CachedNetworkImageState();
 }
 
-class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProviderStateMixin {
+class _CachedNetworkImageState extends State<CachedNetworkImage>
+    with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return ExtendedImage.network(
-      widget.url,
-      fit: widget.fit,
-      cache: true,
-      width: widget.width,
-      height: widget.height,
-      timeLimit: const Duration(seconds: 10),
-      cacheKey: widget.cacheKey,
-      timeRetry: const Duration(seconds: 10),
-      loadStateChanged: (state) {
-        if(state.extendedImageLoadState== LoadState.loading){return Container(
+    return ExtendedImage.network(widget.url,
+        fit: widget.fit,
+        cache: true,
+        width: widget.width,
+        height: widget.height,
+        timeLimit: const Duration(seconds: 10),
+        cacheKey: widget.cacheKey,
+        timeRetry: const Duration(seconds: 10), loadStateChanged: (state) {
+      if (state.extendedImageLoadState == LoadState.loading) {
+        return Container(
           width: widget.width,
           height: widget.height,
           decoration: BoxDecoration(
@@ -71,26 +71,28 @@ class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProv
           ),
           child: ClipRRect(
             borderRadius: (widget.borderRadius != null)
-                ? widget.borderRadius!.resolve(Directionality.of(context)) - BorderRadius.circular(2)
+                ? widget.borderRadius!.resolve(Directionality.of(context)) -
+                    BorderRadius.circular(2)
                 : widget.shape == BoxShape.circle
-                ? BorderRadius.circular(100)
-                : BorderRadius.circular(15 - 2),
+                    ? BorderRadius.circular(100)
+                    : BorderRadius.circular(15 - 2),
             child: widget.hash != 'o'
                 ? BlurHash(
-              hash: widget.hash ?? '',
-            )
+                    hash: widget.hash ?? '',
+                  )
                 : Shimmer.fromColors(
-              baseColor: Colors.grey,
-              highlightColor: Colors.grey.withOpacity(.3),
-              child: SizedBox(
-                width: widget.width,
-                height: widget.height,
-                child: Image.asset('assets/png/loading_points_image.png'),
-              ),
-            ),
+                    baseColor: Colors.grey,
+                    highlightColor: Colors.grey.withOpacity(.3),
+                    child: SizedBox(
+                      width: widget.width,
+                      height: widget.height,
+                      child: Image.asset('assets/png/loading_points_image.png'),
+                    ),
+                  ),
           ),
-        );}
-        else if (state.extendedImageLoadState==LoadState.failed){return GestureDetector(
+        );
+      } else if (state.extendedImageLoadState == LoadState.failed) {
+        return GestureDetector(
           onTap: () => state.reLoadImage(),
           child: Container(
             width: widget.width,
@@ -104,7 +106,9 @@ class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProv
               children: [
                 ClipRRect(
                   borderRadius: widget.borderRadius != null
-                      ? widget.borderRadius!.resolve(Directionality.of(context)) - BorderRadius.circular(2)
+                      ? widget.borderRadius!
+                              .resolve(Directionality.of(context)) -
+                          BorderRadius.circular(2)
                       : BorderRadius.circular(15),
                   child: BlurHash(hash: widget.hash ?? ''),
                 ),
@@ -117,7 +121,9 @@ class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProv
               ],
             ),
           ),
-        );} else if (state.extendedImageInfo==LoadState.completed){return Builder(
+        );
+      } else if (state.extendedImageInfo == LoadState.completed) {
+        return Builder(
           builder: (context) {
             if (widget.controller != null) {
               widget.controller!.add(true);
@@ -143,10 +149,10 @@ class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProv
               ),
             );
           },
-        );}
-        return null;
+        );
       }
-    );
+      return null;
+    });
   }
 
   void openMedia(ExtendedImageState state) async {
@@ -200,4 +206,3 @@ class _CachedNetworkImageState extends State<CachedNetworkImage> with TickerProv
   //   );
   // }
 }
-

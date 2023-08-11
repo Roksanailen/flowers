@@ -1,4 +1,3 @@
-import 'package:flowers/core/global_functions.dart';
 import 'package:flowers/core/toaster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +28,8 @@ class LoginScreen extends StatelessWidget {
               Toaster.showLoading();
             } else if (state.status == AuthStatus.success) {
               Toaster.closeLoading();
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => MainScreen()));
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => MainScreen()));
             } else if (state.status == AuthStatus.failed) {
               Toaster.closeLoading();
               Toaster.showToast('حدث خطأ ما');
@@ -38,7 +38,8 @@ class LoginScreen extends StatelessWidget {
           builder: (context, state) {
             return SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                 child: Form(
                   key: formKey,
                   child: Column(
@@ -71,7 +72,9 @@ class LoginScreen extends StatelessWidget {
                           fillColor: Colors.white,
                           borderRadius: BorderRadius.circular(30),
                           hint: 'Enter a username  ',
-                          validator: (text) => text != null && text.length > 3 ? null : 'please add a valid username'),
+                          validator: (text) => text != null && text.length > 3
+                              ? null
+                              : 'please add a valid username'),
                       const SizedBox(
                         height: 10,
                       ),
@@ -109,10 +112,13 @@ class LoginScreen extends StatelessWidget {
                             ),
                             isPassword: isPasswordValue,
                             controller: passwordController,
-                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
                             fillColor: Colors.white,
                             borderRadius: BorderRadius.circular(30),
-                            validator: (text) => text != null && text.length > 6 ? null : 'please add a valid password',
+                            validator: (text) => text != null && text.length > 6
+                                ? null
+                                : 'please add a valid password',
                           );
                         },
                       ),
@@ -123,8 +129,9 @@ class LoginScreen extends StatelessWidget {
                         child: MainButton(
                           onTap: () {
                             if (formKey.currentState!.validate()) {
-                              authBloc.add(
-                                  LoginEvent(userName: usernameController.text, password: passwordController.text));
+                              authBloc.add(LoginEvent(
+                                  userName: usernameController.text,
+                                  password: passwordController.text));
                             }
                           },
                           title: 'Login',
@@ -146,11 +153,13 @@ class LoginScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => RegisterScreen()));
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => RegisterScreen()));
                             },
                             child: const Text(
                               'register',
-                              style: TextStyle(fontSize: 15, color: Colors.black87),
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.black87),
                             ),
                           ),
                         ],
@@ -167,13 +176,15 @@ class LoginScreen extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
                                 return const ChangePasswordPage();
                               }));
                             },
                             child: const Text(
                               'click here',
-                              style: TextStyle(fontSize: 15, color: Colors.black87),
+                              style: TextStyle(
+                                  fontSize: 15, color: Colors.black87),
                             ),
                           ),
                         ],
@@ -181,6 +192,13 @@ class LoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => MainScreen()));
+                          },
+                          child: const Text('Continue as guest'))
                     ],
                   ),
                 ),

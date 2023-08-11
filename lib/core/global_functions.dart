@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -153,26 +155,15 @@ class GlobalFunctions {
     String? accessToken,
   }) async {
     SharedPreferences sp = await SharedPreferences.getInstance();
-    sp.setString('userInfo', user.toJson().toString());
+    sp.setString('userInfo', jsonEncode(user));
     if (accessToken != null) sp.setString('accessToken', accessToken);
   }
-  //
-  // Future<UserModel> getUserInfo() async {
-  //   SharedPreferences sp = await SharedPreferences.getInstance();
-  //   return UserModel.fromJson(sp.getString(PrefsKeys.userInfo)!);
-  // }
-  //
-  // Future<void> removeUserInfo() async {
-  //   SharedPreferences sp = await SharedPreferences.getInstance();
-  //   sp.remove(PrefsKeys.userInfo);
-  //   sp.remove(PrefsKeys.accessToken);
-  // }
 
-  // Future<User> getUserInfo() async {
-  //   SharedPreferences _sp = await SharedPreferences.getInstance();
-  //   User userInfo = User.fromJson(_sp.getString(PrefsKeys.USERINFO)!);
-  //   return userInfo;
-  // }
+  Future<User> getUserInfo() async {
+    SharedPreferences _sp = await SharedPreferences.getInstance();
+    User userInfo = User.fromJson(jsonDecode(_sp.getString('userInfo')!));
+    return userInfo;
+  }
 
   // logOut(BuildContext context) async {
   //   BotToast.showCustomLoading(toastBuilder: (_) {
@@ -187,7 +178,9 @@ class GlobalFunctions {
   //   exit(0);
   // }
   getLoading(BuildContext context) {
-    showDialog(context: context, builder: (context) => CircularProgressIndicator.adaptive());
+    showDialog(
+        context: context,
+        builder: (context) => const CircularProgressIndicator.adaptive());
   }
 
   clearUserInfo() async {

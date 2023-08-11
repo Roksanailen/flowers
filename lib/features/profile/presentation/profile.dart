@@ -39,7 +39,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                       return LoginScreen();
                     }));
                   },

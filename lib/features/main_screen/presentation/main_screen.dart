@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../cart/presentation/markting_basket.dart';
 import '../../products/presentation/store_screen.dart';
-import '../../profile/presentation/MainProfileScreen.dart';
+import '../../profile/presentation/main_profile_screen.dart';
 import '../../profile/presentation/profileEdit.dart';
 import 'myhome.dart';
 

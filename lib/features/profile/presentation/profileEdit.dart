@@ -1,58 +1,95 @@
-import 'package:flutter/material.dart';
+import 'package:flowers/core/global_functions.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
+import '../../../core/models/user_model.dart';
 
-class profileEdit extends StatelessWidget {
-  const profileEdit({Key? key}) : super(key: key);
+class ProfileEdit extends StatefulWidget {
+  const ProfileEdit({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileEdit> createState() => _ProfileEditState();
+}
+
+class _ProfileEditState extends State<ProfileEdit> {
+  @override
+  void didChangeDependencies() async {
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-          children: [
-            Column(
-              children: [
-                SizedBox(height: 40),
-                CircleAvatar(
-                  radius: 70,
-                  backgroundImage: AssetImage("assets/images/flower.jpg") ,
-                ),
-                SizedBox(
-                  height:20,
-                ),
-              itemprofile('Name', 'roksan',CupertinoIcons.person),
-                SizedBox(height: 14),
-                itemprofile('phone', '0941845129',CupertinoIcons.phone),
-                SizedBox(height: 14),
-                itemprofile('password', '******',CupertinoIcons.padlock),
-                SizedBox(height: 14),
-                itemprofile('Email', 'roroksan@gmail.com',CupertinoIcons.mail),
-
-                SizedBox(height: 20),
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                      onPressed: (){},
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white70,
-                        padding: EdgeInsets.all(15),),
-
-                      child: Text('Edit profile',style: TextStyle(
-                        color: Colors.black
-                      ),),
-
-                  ),
-                ),
-                SizedBox(height: 40,)
-              ],
-
-            )
-          ],
-        ),
-
+        children: [
+          FutureBuilder<User>(
+              future: GlobalFunctions().getUserInfo(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    children: [
+                      const SizedBox(height: 40),
+                      const CircleAvatar(
+                        radius: 70,
+                        backgroundImage: AssetImage("assets/images/flower.jpg"),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      itemprofile('Name', snapshot.requireData.username,
+                          CupertinoIcons.person),
+                      const SizedBox(height: 14),
+                      itemprofile('phone', snapshot.requireData.phone,
+                          CupertinoIcons.phone),
+                      const SizedBox(height: 14),
+                      itemprofile('Email', snapshot.requireData.email,
+                          CupertinoIcons.mail),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white70,
+                            padding: const EdgeInsets.all(15),
+                          ),
+                          child: const Text(
+                            'Edit profile',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white70,
+                            padding: const EdgeInsets.all(15),
+                          ),
+                          child: const Text(
+                            'My Orders',
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              })
+        ],
+      ),
     );
   }
 }
+
 itemprofile(String title, String subtitle, IconData iconData) {
   return Container(
     height: 60,
@@ -60,20 +97,20 @@ itemprofile(String title, String subtitle, IconData iconData) {
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(20),
-      boxShadow: [ BoxShadow(
-        offset: Offset(0, 5),
-        color: Colors.grey,
-        spreadRadius: 2,
-        blurRadius: 10,
-      )
+      boxShadow: const [
+        BoxShadow(
+          offset: Offset(0, 5),
+          color: Colors.grey,
+          spreadRadius: 2,
+          blurRadius: 10,
+        )
       ],
     ),
     child: ListTile(
       title: Text(title),
       subtitle: Text(subtitle),
       leading: Icon(iconData),
-      trailing: Icon(Icons.arrow_forward,color: Colors.grey.shade400),
-
+      trailing: Icon(Icons.arrow_forward, color: Colors.grey.shade400),
     ),
   );
 }

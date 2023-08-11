@@ -20,34 +20,54 @@ class ProductsRepository with HandlingExceptionManager {
     });
   }
 
-  Future<Either<Failure, ProductsResponseModel>> getProductsByCategory(int id) async {
+  Future<Either<Failure, ProductsResponseModel>> getProductsByCategory(
+      GetProductsParams params) async {
     return wrapHandling(tryCall: () async {
-      return Right(await ProductsRequests().getProductsByCategory(id));
+      return Right(await ProductsRequests().getProductsByCategory(params));
     });
   }
 }
 
 class ProductsRequests {
   Future<TypesResponseModel> getTypes() async {
-    GetApi getApi = GetApi(uri: ApiVariables().getAllTypes(), fromJson: typesResponseModelFromJson);
+    GetApi getApi = GetApi(
+        uri: ApiVariables().getAllTypes(),
+        fromJson: typesResponseModelFromJson);
     final result = await getApi.callRequest();
     return result;
   }
 
   Future<CategoriesResponseModel> getCategories(int id) async {
     GetApi getApi = GetApi(
-        uri: ApiVariables().getAllCategories(params: {'filters[type][id][\$eq]': '$id'}),
+        uri: ApiVariables()
+            .getAllCategories(params: {'filters[type][id][\$eq]': '$id'}),
         fromJson: categoriesResponseModelFromJson);
     final result = await getApi.callRequest();
     return result;
   }
 
-  Future<ProductsResponseModel> getProductsByCategory(int id) async {
-    GetApi getApi =
-        GetApi(
-        uri: ApiVariables().getAllProducts(params: {'filters[category][id][\$eq]': '$id'}),
+  Future<ProductsResponseModel> getProductsByCategory(
+      GetProductsParams params) async {
+    GetApi getApi = GetApi(
+        uri: ApiVariables().getAllProducts(params: {
+          if (params.cagtegoryId != null)
+            'filters[category][id][\$eq]': '${params.cagtegoryId}',
+          if (params.typeId != null)
+            'filters[category][type][id][\$eq]': '${params.typeId}',
+          if (params.isOffer!) 'filters[price_after_offer][\$ne]': 'null',
+          if (params.search != null) 'filters[name][\$contains]': params.search!
+        }),
         fromJson: productsResponseModelFromJson);
     final result = await getApi.callRequest();
     return result;
   }
+}
+
+class GetProductsParams {
+  final int? cagtegoryId;
+  final int? typeId;
+  final bool? isOffer;
+  final String? search;
+  GetProductsParams(
+      {this.cagtegoryId, this.typeId, this.isOffer = false, this.search});
 }

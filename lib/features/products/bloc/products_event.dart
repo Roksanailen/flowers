@@ -15,8 +15,8 @@ class GetCategoriesEvent extends ProductsEvent {
 }
 
 class GetProductsEvent extends ProductsEvent {
-  final int categoryId;
+  final GetProductsParams params;
   GetProductsEvent({
-    required this.categoryId,
+    required this.params,
   });
 }
