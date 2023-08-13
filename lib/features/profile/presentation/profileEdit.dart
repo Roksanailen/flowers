@@ -3,6 +3,7 @@ import 'package:flowers/core/widgets/yes_no_dialog.dart';
 import 'package:flowers/features/splash/presentation/splash_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/models/user_model.dart';
 import 'change_password_profile_page.dart';
@@ -15,8 +16,10 @@ class ProfileEdit extends StatefulWidget {
 }
 
 class _ProfileEditState extends State<ProfileEdit> {
+  late AppLocalizations appLocalizations;
   @override
   void didChangeDependencies() async {
+    appLocalizations = AppLocalizations.of(context)!;
     super.didChangeDependencies();
   }
 

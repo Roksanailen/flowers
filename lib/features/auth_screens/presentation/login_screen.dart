@@ -1,6 +1,7 @@
 import 'package:flowers/core/toaster.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/widgets/main_button.dart';
 import '../../../core/widgets/main_text_failed.dart';
@@ -9,13 +10,30 @@ import '../bloc/auth_bloc.dart';
 import 'changepassword.dart';
 import 'register_screen.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
+
   var passwordController = TextEditingController();
+
   var usernameController = TextEditingController();
+
   var authBloc = AuthBloc();
+
   var isPassword = ValueNotifier(true);
+  late AppLocalizations appLocalizations;
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +48,7 @@ class LoginScreen extends StatelessWidget {
             } else if (state.status == AuthStatus.success) {
               Toaster.closeLoading();
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => MainScreen()));
+                  MaterialPageRoute(builder: (context) => const MainScreen()));
             } else if (state.status == AuthStatus.failed) {
               Toaster.closeLoading();
               Toaster.showToast('حدث خطأ ما');
@@ -204,7 +222,7 @@ class LoginScreen extends StatelessWidget {
                           onPressed: () {
                             Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                    builder: (context) => MainScreen()));
+                                    builder: (context) => const MainScreen()));
                           },
                           child: const Text('Continue as guest'))
                     ],

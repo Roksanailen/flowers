@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../core/widgets/main_text_failed.dart';
 import 'reset_password.dart';
 
@@ -14,12 +16,19 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   late final TextEditingController _passwordController;
   late final TextEditingController _confirmPasswordController;
 
+  late AppLocalizations appLocalizations;
   @override
   void initState() {
     super.initState();
     _formKey = GlobalKey<FormState>();
     _passwordController = TextEditingController();
     _confirmPasswordController = TextEditingController();
+  }
+
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
   }
 
   @override
@@ -36,7 +45,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 padding: const EdgeInsets.only(top: 200, right: 40),
                 child: const Text(
                   'Enter your New Password',
-                  style: TextStyle(fontSize: 22, color: Colors.black87, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 10),
@@ -75,7 +87,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               const SizedBox(height: 10),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  side: const BorderSide(style: BorderStyle.solid, width: 1, color: Colors.grey),
+                  side: const BorderSide(
+                      style: BorderStyle.solid, width: 1, color: Colors.grey),
                 ),
                 child: const Text(
                   'next',
@@ -83,7 +96,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {}
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
                     return const ResetPasswordPage();
                   }));
                 },

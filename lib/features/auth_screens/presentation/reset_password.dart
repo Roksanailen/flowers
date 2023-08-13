@@ -1,5 +1,6 @@
 import 'package:flowers/core/validation_extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/widgets/main_text_failed.dart';
 
@@ -13,6 +14,12 @@ class ResetPasswordPage extends StatefulWidget {
 class _ResetPasswordPageState extends State<ResetPasswordPage> {
   late final TextEditingController _emailController;
   late final GlobalKey<FormState> _formKey;
+  late AppLocalizations appLocalizations;
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
+  }
 
   @override
   void initState() {
@@ -46,8 +53,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   borderRadius: BorderRadius.circular(30),
                   controller: _emailController,
                   validator: (text) {
-                    if (text != null &&
-                       text.isValidEmail()) {
+                    if (text != null && text.isValidEmail()) {
                       return null;
                     }
                     return 'enter valid email';
@@ -57,7 +63,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               const SizedBox(height: 10),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  side: const BorderSide(style: BorderStyle.solid, color: Colors.grey),
+                  side: const BorderSide(
+                      style: BorderStyle.solid, color: Colors.grey),
                 ),
                 child: const Text(
                   'Send Email',

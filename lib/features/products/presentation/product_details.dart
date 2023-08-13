@@ -2,10 +2,25 @@ import 'package:flowers/core/app_text_styles.dart';
 import 'package:flowers/core/models/products_model.dart';
 import 'package:flowers/core/widgets/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   const ProductDetails({Key? key, required this.product}) : super(key: key);
   final ProductModel product;
+
+  @override
+  State<ProductDetails> createState() => _ProductDetailsState();
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+  late AppLocalizations appLocalizations;
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,11 +32,11 @@ class ProductDetails extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: CachedNetworkImage(
-                url: product.image!.url!,
+                url: widget.product.image!.url!,
                 width: MediaQuery.of(context).size.width,
                 height: 350,
                 fit: BoxFit.cover,
-                hash: product.image!.blurhash),
+                hash: widget.product.image!.blurhash),
           ),
           Container(
             height: 450,
@@ -41,7 +56,7 @@ class ProductDetails extends StatelessWidget {
                       child: RichText(
                           text: TextSpan(children: [
                         TextSpan(
-                            text: product.name,
+                            text: widget.product.name,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 25)),
                       ])),
@@ -50,7 +65,7 @@ class ProductDetails extends StatelessWidget {
                       padding:
                           const EdgeInsets.only(top: 50, left: 120, right: 40),
                       child: Text(
-                        'Price ${product.price} S.P',
+                        'Price ${widget.product.price} S.P',
                         style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -68,7 +83,7 @@ class ProductDetails extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 10, left: 25, right: 25),
                 child: Text(
-                  product.description!,
+                  widget.product.description!,
                   style: const TextStyle(
                       fontWeight: FontWeight.w600, fontSize: 15),
                 ),

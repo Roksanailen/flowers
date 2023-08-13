@@ -3,6 +3,7 @@ import 'package:flowers/core/widgets/error_widget.dart';
 import 'package:flowers/features/cart/presentation/order_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'bloc/order_bloc.dart';
 
@@ -15,10 +16,18 @@ class MyOrdersScreen extends StatefulWidget {
 
 class _MyOrdersScreenState extends State<MyOrdersScreen> {
   late final OrderBloc orderBloc;
+  late AppLocalizations appLocalizations;
   @override
   void initState() {
     orderBloc = OrderBloc();
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   @override

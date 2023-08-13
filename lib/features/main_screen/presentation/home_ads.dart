@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flowers/core/app_text_styles.dart';
 import 'package:flowers/core/models/products_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/widgets/cached_network_image.dart';
 
@@ -18,11 +19,13 @@ class HomeAdsList extends StatefulWidget {
 
 class _HomeAdsListState extends State<HomeAdsList> {
   final PageController pageController = PageController(initialPage: 200);
+  late AppLocalizations appLocalizations;
   late Size size;
   final indexValue = ValueNotifier<double>(0);
   late Timer timer;
   @override
   void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
     timer = Timer.periodic(const Duration(seconds: 10), (time) {
       pageController.animateToPage(pageController.page!.floor() + 1,
           duration: const Duration(milliseconds: 200), curve: Curves.ease);

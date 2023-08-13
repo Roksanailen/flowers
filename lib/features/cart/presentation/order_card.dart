@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../../../core/models/order_response_model.dart';
 
-class OrderCard extends StatelessWidget {
+class OrderCard extends StatefulWidget {
   const OrderCard({
     Key? key,
     required this.order,
@@ -14,7 +15,18 @@ class OrderCard extends StatelessWidget {
   final OrderModel order;
   final VoidCallback onTap;
 
-  // final DateTime deliveryDate;
+  @override
+  State<OrderCard> createState() => _OrderCardState();
+}
+
+class _OrderCardState extends State<OrderCard> {
+  late AppLocalizations appLocalizations;
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +59,7 @@ class OrderCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '${order.id}',
+                        '${widget.order.id}',
                         style: TextStyle(
                           fontSize: size.width * .036,
                         ),
@@ -64,9 +76,9 @@ class OrderCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        order.status == 0
+                        widget.order.status == 0
                             ? 'pending'
-                            : order.status == 2
+                            : widget.order.status == 2
                                 ? 'rejected'
                                 : 'completed',
                         style: TextStyle(
@@ -87,7 +99,7 @@ class OrderCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                            '${order.totalPrice} ',
+                            '${widget.order.totalPrice} ',
                             style: TextStyle(
                               fontSize: size.width * .036,
                             ),
@@ -106,7 +118,8 @@ class OrderCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        intl.DateFormat('yyyy-MM-dd').format(order.orderDate),
+                        intl.DateFormat('yyyy-MM-dd')
+                            .format(widget.order.orderDate),
                         style: TextStyle(
                           fontSize: size.width * .036,
                         ),
@@ -114,9 +127,10 @@ class OrderCard extends StatelessWidget {
                       const SizedBox(
                         width: 50,
                       ),
-                      if (order.status == 0)
+                      if (widget.order.status == 0)
                         ElevatedButton(
-                            onPressed: onTap, child: const Text('Order Done'))
+                            onPressed: widget.onTap,
+                            child: const Text('Order Done'))
                     ],
                   ),
                 ],

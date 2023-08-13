@@ -2,6 +2,7 @@ import 'package:flowers/core/widgets/error_widget.dart';
 import 'package:flowers/features/products/presentation/products_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/widgets/main_text_failed.dart';
 import '../bloc/products_bloc.dart';
@@ -16,11 +17,19 @@ class StoreScreen extends StatefulWidget {
 class _StoreScreenState extends State<StoreScreen> {
   late ValueNotifier<int> _selectedCat;
   late ProductsBloc productsBloc;
+  late AppLocalizations appLocalizations;
   @override
   void initState() {
     _selectedCat = ValueNotifier(0);
     productsBloc = ProductsBloc();
     super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   @override
@@ -33,7 +42,8 @@ class _StoreScreenState extends State<StoreScreen> {
         child: BlocConsumer<ProductsBloc, ProductsState>(
           listener: (context, state) {
             if (state.getTypesStatus == GetTypesStatus.success) {
-              productsBloc.add(GetCategoriesEvent(typeId: state.types[_selectedCat.value].id!));
+              productsBloc.add(GetCategoriesEvent(
+                  typeId: state.types[_selectedCat.value].id!));
             }
           },
           builder: (context, state) {
@@ -48,7 +58,8 @@ class _StoreScreenState extends State<StoreScreen> {
                         }),
                       )
                     : Container(
-                        padding: const EdgeInsets.only(top: 70, left: 20, right: 20),
+                        padding:
+                            const EdgeInsets.only(top: 70, left: 20, right: 20),
                         child: Column(
                           children: [
                             Container(
@@ -76,7 +87,9 @@ class _StoreScreenState extends State<StoreScreen> {
                                     return SizedBox(
                                       child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
-                                        padding: const EdgeInsetsDirectional.only(end: 15),
+                                        padding:
+                                            const EdgeInsetsDirectional.only(
+                                                end: 15),
                                         itemCount: state.types.length,
                                         itemBuilder: (context, index) {
                                           return TypeChoiceChip(
@@ -84,8 +97,12 @@ class _StoreScreenState extends State<StoreScreen> {
                                             isActive: index == value,
                                             onTap: () {
                                               _selectedCat.value = index;
-                                              productsBloc
-                                                  .add(GetCategoriesEvent(typeId: state.types[_selectedCat.value].id!));
+                                              productsBloc.add(
+                                                  GetCategoriesEvent(
+                                                      typeId: state
+                                                          .types[_selectedCat
+                                                              .value]
+                                                          .id!));
                                             },
                                           );
                                         },
@@ -94,38 +111,60 @@ class _StoreScreenState extends State<StoreScreen> {
                                   },
                                 )),
                             Expanded(
-                                child: state.getCategoriesStatus == GetCategoriesStatus.loading
+                                child: state.getCategoriesStatus ==
+                                        GetCategoriesStatus.loading
                                     ? const Center(
-                                        child: CircularProgressIndicator(color: Colors.white),
+                                        child: CircularProgressIndicator(
+                                            color: Colors.white),
                                       )
-                                    : state.getCategoriesStatus == GetCategoriesStatus.failed
+                                    : state.getCategoriesStatus ==
+                                            GetCategoriesStatus.failed
                                         ? Center(
                                             child: MainErrorWidget(onTap: () {
-                                              productsBloc
-                                                  .add(GetCategoriesEvent(typeId: state.types[_selectedCat.value].id!));
+                                              productsBloc.add(
+                                                  GetCategoriesEvent(
+                                                      typeId: state
+                                                          .types[_selectedCat
+                                                              .value]
+                                                          .id!));
                                             }),
                                           )
                                         : ListView.builder(
-                                            physics: const BouncingScrollPhysics(),
+                                            physics:
+                                                const BouncingScrollPhysics(),
                                             shrinkWrap: true,
                                             itemCount: state.categories.length,
                                             itemBuilder: (context, index) {
                                               return Card(
-                                                margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                                                margin:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 30,
+                                                        vertical: 10),
                                                 child: ListTile(
                                                   onTap: () {
-                                                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                                    Navigator.of(context).push(
+                                                        MaterialPageRoute(
+                                                            builder: (context) {
                                                       return ProductsScreen(
-                                                        categoryId: state.categories[index].id!,
-                                                        categoryName: state.categories[index].attributes!.name!,
+                                                        categoryId: state
+                                                            .categories[index]
+                                                            .id!,
+                                                        categoryName: state
+                                                            .categories[index]
+                                                            .attributes!
+                                                            .name!,
                                                       );
                                                     }));
                                                   },
                                                   leading: const Icon(
-                                                    Icons.arrow_forward_ios_outlined,
+                                                    Icons
+                                                        .arrow_forward_ios_outlined,
                                                     color: Colors.black,
                                                   ),
-                                                  title: Text(state.categories[index].attributes!.name!),
+                                                  title: Text(state
+                                                      .categories[index]
+                                                      .attributes!
+                                                      .name!),
                                                 ),
                                               );
                                             }))
@@ -140,7 +179,7 @@ class _StoreScreenState extends State<StoreScreen> {
 }
 
 class TypeChoiceChip extends StatelessWidget {
-  TypeChoiceChip({
+  const TypeChoiceChip({
     Key? key,
     required this.isActive,
     required this.title,

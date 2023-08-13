@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../auth_screens/presentation/login_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  late AppLocalizations appLocalizations;
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    appLocalizations = AppLocalizations.of(context)!;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +52,9 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                      return LoginScreen();
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const LoginScreen();
                     }));
                   },
                   child: Container(

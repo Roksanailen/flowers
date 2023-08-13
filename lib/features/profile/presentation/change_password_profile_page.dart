@@ -2,6 +2,7 @@ import 'package:flowers/core/toaster.dart';
 import 'package:flowers/features/profile/presentation/bloc/change_password_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/widgets/main_text_failed.dart';
 
@@ -16,7 +17,7 @@ class ChangePasswordProfilePage extends StatefulWidget {
 class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
   late final GlobalKey<FormState> _formKey;
   late final TextEditingController _oldPasswordController;
-
+  late AppLocalizations appLocalizations;
   late final TextEditingController _passwordController;
   late final TextEditingController _confirmPasswordController;
 
@@ -28,6 +29,12 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
     _passwordController = TextEditingController();
     _confirmPasswordController = TextEditingController();
     changePasswordBloc = ChangePasswordBloc();
+  }
+
+  @override
+  void didChangeDependencies() {
+    appLocalizations = AppLocalizations.of(context)!;
+    super.didChangeDependencies();
   }
 
   late final ChangePasswordBloc changePasswordBloc;
