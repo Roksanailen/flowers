@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/models/user_model.dart';
+import 'change_password_profile_page.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({Key? key}) : super(key: key);
@@ -50,30 +51,17 @@ class _ProfileEditState extends State<ProfileEdit> {
                       SizedBox(
                         width: 200,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    const ChangePasswordProfilePage()));
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white70,
                             padding: const EdgeInsets.all(15),
                           ),
                           child: const Text(
-                            'Edit profile',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                        width: 200,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white70,
-                            padding: const EdgeInsets.all(15),
-                          ),
-                          child: const Text(
-                            'My Orders',
+                            'Change Password',
                             style: TextStyle(color: Colors.black),
                           ),
                         ),

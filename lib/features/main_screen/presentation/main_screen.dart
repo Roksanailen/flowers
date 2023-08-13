@@ -19,8 +19,8 @@ class _MainScreenState extends State<MainScreen> {
 
   final screens = [
     const Myhome(),
-    const MyOrdersScreen(),
     const StoreScreen(),
+    const MyOrdersScreen(),
     const MainProfileScreen(),
   ];
   @override

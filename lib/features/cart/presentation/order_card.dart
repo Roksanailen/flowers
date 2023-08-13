@@ -20,7 +20,6 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.all(10),
         width: size.width * .9,
@@ -65,7 +64,11 @@ class OrderCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'rejected',
+                        order.status == 0
+                            ? 'pending'
+                            : order.status == 2
+                                ? 'rejected'
+                                : 'completed',
                         style: TextStyle(
                           fontSize: size.width * .036,
                         ),
@@ -113,7 +116,7 @@ class OrderCard extends StatelessWidget {
                       ),
                       if (order.status == 0)
                         ElevatedButton(
-                            onPressed: () {}, child: const Text('Order Done'))
+                            onPressed: onTap, child: const Text('Order Done'))
                     ],
                   ),
                 ],

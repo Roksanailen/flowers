@@ -6,4 +6,9 @@ abstract class OrderEvent {
 
 class GetMyOrdersEvent extends OrderEvent {}
 
-class CreateOrderEvent extends OrderEvent {}
+class OrderCompletedEvent extends OrderEvent {
+  final int id;
+  OrderCompletedEvent({
+    required this.id,
+  });
+}

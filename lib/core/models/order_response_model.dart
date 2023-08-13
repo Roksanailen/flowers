@@ -93,4 +93,36 @@ class OrderModel {
         "locale": locale,
         "flowers": List<dynamic>.from(flowers.map((x) => x.toJson())),
       };
+
+  OrderModel copyWith({
+    int? id,
+    String? totalPrice,
+    dynamic? deliverdAt,
+    DateTime? orderDate,
+    int? status,
+    String? totalProductsCount,
+    DateTime? createdAt,
+    DateTime? updatedAt,
+    dynamic? softDeletedAt,
+    dynamic? softDeletedById,
+    dynamic? softDeletedByType,
+    String? locale,
+    List<ProductModel>? flowers,
+  }) {
+    return OrderModel(
+      id: id ?? this.id,
+      totalPrice: totalPrice ?? this.totalPrice,
+      deliverdAt: deliverdAt ?? this.deliverdAt,
+      orderDate: orderDate ?? this.orderDate,
+      status: status ?? this.status,
+      totalProductsCount: totalProductsCount ?? this.totalProductsCount,
+      createdAt: createdAt ?? this.createdAt,
+      updatedAt: updatedAt ?? this.updatedAt,
+      softDeletedAt: softDeletedAt ?? this.softDeletedAt,
+      softDeletedById: softDeletedById ?? this.softDeletedById,
+      softDeletedByType: softDeletedByType ?? this.softDeletedByType,
+      locale: locale ?? this.locale,
+      flowers: flowers ?? this.flowers,
+    );
+  }
 }

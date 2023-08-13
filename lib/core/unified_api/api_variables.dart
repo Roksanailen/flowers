@@ -28,6 +28,8 @@ class ApiVariables {
 
   Uri register() => _mainUri(path: 'auth/local/register');
 
+  Uri changePassword() => _mainUri(path: 'auth/change-password');
+
   Uri getAllProducts({Map<String, String>? params}) =>
       _mainUri(path: 'flowers', queryParameters: params);
   Uri getAllTypes({Map<String, String>? params}) =>
@@ -36,4 +38,5 @@ class ApiVariables {
       _mainUri(path: 'categories', queryParameters: params);
   Uri getMyOrders({Map<String, String>? params}) =>
       _mainUri(path: 'orders', queryParameters: params);
+  Uri completeOrder({required int id}) => _mainUri(path: 'orders/deliverd/$id');
 }

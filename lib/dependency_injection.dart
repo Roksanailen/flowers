@@ -1,3 +1,4 @@
+import 'package:flowers/core/bloc/cart_bloc.dart';
 import 'package:flowers/core/bloc/language_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -10,4 +11,5 @@ Future<void> appDependencies() async {
     () => ThemeServiceBloc(),
   );
   serviceLocator.registerLazySingleton<LanguageBloc>(() => LanguageBloc());
+  serviceLocator.registerLazySingleton<CartBloc>(() => CartBloc());
 }

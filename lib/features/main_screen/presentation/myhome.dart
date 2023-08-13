@@ -8,7 +8,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../core/bloc/theme_service_bloc.dart';
-import '../../../core/widgets/main_text_failed.dart';
 import '../../../dependency_injection.dart';
 import 'bloc/home_bloc.dart';
 
@@ -66,19 +65,6 @@ class _MyhomeState extends State<Myhome> {
             return Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: ListView(children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white,
-                  ),
-                  child: MainTextField(
-                    controller: TextEditingController(),
-                    prefixIcon: const Icon(
-                      Icons.search_rounded,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
                 (state.offersProducts.isEmpty &&
                         state.getOffersStatus == GetOffersStatus.success)
                     ? const SizedBox()
