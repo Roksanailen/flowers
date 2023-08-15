@@ -69,9 +69,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           margin: const EdgeInsets.only(top: 40, right: 40),
                           alignment: Alignment.center,
                           child: Text(
-                            l10n.registerANewAccount,
-                            style:
-                                TextStyle(fontSize: 25, color: Colors.black87),
+                            appLocalizations.registerANewAccount,
+                            style: const TextStyle(
+                                fontSize: 25, color: Colors.black87),
                           ),
                         ),
                         const SizedBox(
@@ -80,24 +80,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         MainTextField(
                           controller: usernameController,
                           fillColor: Colors.white,
-                          hint: l10n.username,
+                          hint: appLocalizations.username,
                           borderRadius: BorderRadius.circular(30),
                           validator: (text) => text != null && text.length > 3
                               ? null
-                              : l10n.enterAValidUsername,
+                              : appLocalizations.enterAValidUsername,
                         ),
                         const SizedBox(
                           height: 20,
                         ),
                         MainTextField(
-                          hint: l10n.email,
+                          hint: appLocalizations.email,
                           controller: emailController,
                           fillColor: Colors.white,
                           borderRadius: BorderRadius.circular(30),
                           validator: (email) =>
                               email != null && email.isValidEmail()
                                   ? null
-                                  : l10n.pleaseEnterAValidEmail,
+                                  : appLocalizations.pleaseEnterAValidEmail,
                         ),
                         const SizedBox(
                           height: 20,
@@ -105,12 +105,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         MainTextField(
                           controller: phoneController,
                           fillColor: Colors.white,
-                          hint: l10n.phoneNumber,
+                          hint: appLocalizations.phoneNumber,
                           borderRadius: BorderRadius.circular(30),
                           validator: (text) =>
                               text != null && text.isValidPhone()
                                   ? null
-                                  : l10n.pleaseEnterAValidPhone,
+                                  : appLocalizations.pleaseEnterAValidPhone,
                         ),
                         const SizedBox(
                           height: 20,
@@ -119,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           valueListenable: isPassword,
                           builder: (_, bool isPasswordValue, child) {
                             return MainTextField(
-                              hint: l10n.password,
+                              hint: appLocalizations.password,
                               suffixIcon: GestureDetector(
                                 onTap: () {
                                   isPassword.value = !isPasswordValue;
@@ -127,13 +127,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: AnimatedSwitcher(
                                   duration: const Duration(milliseconds: 500),
                                   child: isPasswordValue
-                                      ? const Icon(
+                                      ? Icon(
                                           Icons.visibility_off,
-                                          key: Key(l10n.show),
+                                          key: Key(appLocalizations.show),
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.remove_red_eye,
-                                          key: Key(l10n.notshow),
+                                          key: Key(appLocalizations.notshow),
                                         ),
                                 ),
                               ),
@@ -143,10 +143,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   AutovalidateMode.onUserInteraction,
                               fillColor: Colors.white,
                               borderRadius: BorderRadius.circular(30),
-                              validator: (text) =>
-                                  text != null && text.length > 6
-                                      ? null
-                                      : l10n.pleaseAddAValidPassword,
+                              validator: (text) => text != null &&
+                                      text.length > 6
+                                  ? null
+                                  : appLocalizations.pleaseAddAValidPassword,
                             );
                           },
                         ),
@@ -157,7 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           valueListenable: isPassword,
                           builder: (_, bool isPasswordValue, child) {
                             return MainTextField(
-                              hint: l10n.consfirmPassword,
+                              hint: appLocalizations.consfirmPassword,
                               suffixIcon: GestureDetector(
                                 onTap: () {
                                   isPassword.value = !isPasswordValue;
@@ -165,13 +165,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 child: AnimatedSwitcher(
                                   duration: const Duration(milliseconds: 500),
                                   child: isPasswordValue
-                                      ? const Icon(
+                                      ? Icon(
                                           Icons.visibility_off,
-                                          key: Key(l10n.show),
+                                          key: Key(appLocalizations.show),
                                         )
-                                      : const Icon(
+                                      : Icon(
                                           Icons.remove_red_eye,
-                                          key: Key(l10n.notshow),
+                                          key: Key(appLocalizations.notshow),
                                         ),
                                 ),
                               ),
@@ -184,7 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               validator: (text) => text != null &&
                                       text == (passwordController.text)
                                   ? null
-                                  : l10n.passwordsIsntMatched,
+                                  : appLocalizations.passwordsIsntMatched,
                             );
                           },
                         ),
@@ -203,7 +203,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       username: usernameController.text));
                                 }
                               },
-                              title: l10n.register,
+                              title: appLocalizations.register,
                               height: 40,
                               width: 80,
                               color: Colors.white,

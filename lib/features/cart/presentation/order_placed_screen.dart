@@ -38,14 +38,14 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
                         .withOpacity(.3),
                   ),
                   child: Image.asset('assets/basket.png')),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  l10n.yourOrderIsPlacedSuccessfully,
+                  appLocalizations.yourOrderIsPlacedSuccessfully,
                 ),
               ),
               ElevatedButton(
-                  child: Text(l10n.goToHome),
+                  child: Text(appLocalizations.goToHome),
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) {

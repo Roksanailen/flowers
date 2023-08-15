@@ -78,8 +78,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       Container(
                         padding: const EdgeInsets.only(right: 200),
                         child: Text(
-                          l10n.username,
-                          style: TextStyle(fontSize: 20, color: Colors.black87),
+                          appLocalizations.username,
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black87),
                         ),
                       ),
                       const SizedBox(
@@ -91,18 +92,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           fillColor: Colors.white,
                           textInputAction: TextInputAction.next,
                           borderRadius: BorderRadius.circular(30),
-                          hint: l10n.enterAUsername,
+                          hint: appLocalizations.enterAUsername,
                           validator: (text) => text != null && text.length > 3
                               ? null
-                              : l10n.pleaseAddAValidUsername),
+                              : appLocalizations.pleaseAddAValidUsername),
                       const SizedBox(
                         height: 10,
                       ),
                       Container(
                         padding: const EdgeInsets.only(right: 200),
                         child: Text(
-                          l10n.password,
-                          style: TextStyle(fontSize: 20, color: Colors.black87),
+                          appLocalizations.password,
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black87),
                         ),
                       ),
                       const SizedBox(
@@ -112,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         valueListenable: isPassword,
                         builder: (_, bool isPasswordValue, child) {
                           return MainTextField(
-                            hint: l10n.password,
+                            hint: appLocalizations.password,
                             textInputAction: TextInputAction.go,
                             onSubmitted: (value) {
                               authBloc.add(LoginEvent(
@@ -126,13 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: AnimatedSwitcher(
                                 duration: const Duration(milliseconds: 500),
                                 child: isPasswordValue
-                                    ? const Icon(
+                                    ? Icon(
                                         Icons.visibility_off,
-                                        key: Key(l10n.show),
+                                        key: Key(appLocalizations.show),
                                       )
-                                    : const Icon(
+                                    : Icon(
                                         Icons.remove_red_eye,
-                                        key: Key(l10n.notshow),
+                                        key: Key(appLocalizations.notshow),
                                       ),
                               ),
                             ),
@@ -144,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(30),
                             validator: (text) => text != null && text.length > 6
                                 ? null
-                                : l10n.pleaseAddAValidPassword,
+                                : appLocalizations.pleaseAddAValidPassword,
                           );
                         },
                       ),
@@ -160,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   password: passwordController.text));
                             }
                           },
-                          title: l10n.login,
+                          title: appLocalizations.login,
                           width: 80,
                           height: 40,
                           fontColor: Colors.black,
@@ -174,17 +176,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            l10n.dontHaveAnAccount,
-                            style: TextStyle(fontSize: 15, color: Colors.white),
+                            appLocalizations.dontHaveAnAccount,
+                            style: const TextStyle(
+                                fontSize: 15, color: Colors.white),
                           ),
                           InkWell(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => RegisterScreen()));
+                                  builder: (context) =>
+                                      const RegisterScreen()));
                             },
                             child: Text(
-                              l10n.register,
-                              style: TextStyle(
+                              appLocalizations.register,
+                              style: const TextStyle(
                                   fontSize: 15, color: Colors.black87),
                             ),
                           ),
@@ -197,8 +201,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            l10n.ForgetThePassword,
-                            style: TextStyle(fontSize: 15, color: Colors.white),
+                            appLocalizations.forgetThePassword,
+                            style: const TextStyle(
+                                fontSize: 15, color: Colors.white),
                           ),
                           InkWell(
                             onTap: () {
@@ -208,8 +213,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               }));
                             },
                             child: Text(
-                              l10n.clickHere,
-                              style: TextStyle(
+                              appLocalizations.clickHere,
+                              style: const TextStyle(
                                   fontSize: 15, color: Colors.black87),
                             ),
                           ),
@@ -224,7 +229,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => const MainScreen()));
                           },
-                          child: const Text(l10n.continueAsGuest))
+                          child: Text(appLocalizations.continueAsGuest))
                     ],
                   ),
                 ),

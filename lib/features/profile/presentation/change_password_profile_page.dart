@@ -70,8 +70,8 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                   Container(
                     padding: const EdgeInsets.only(top: 20, right: 40),
                     child: Text(
-                      l10n.enterYourOldPassword,
-                      style: TextStyle(
+                      appLocalizations.enterYourOldPassword,
+                      style: const TextStyle(
                           fontSize: 22,
                           color: Colors.black87,
                           fontWeight: FontWeight.bold),
@@ -82,7 +82,7 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                     padding: const EdgeInsets.all(20),
                     child: MainTextField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        label: l10n.oldPassword,
+                        label: appLocalizations.oldPassword,
                         borderRadius: BorderRadius.circular(30),
                         fillColor: Colors.white,
                         controller: _oldPasswordController,
@@ -90,14 +90,14 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                           if (text != null && text.length >= 8) {
                             return null;
                           }
-                          return l10n.entervalidpassword;
+                          return appLocalizations.entervalidpassword;
                         }),
                   ),
                   Container(
                     padding: const EdgeInsets.only(top: 20, right: 40),
                     child: Text(
-                      l10n.enterYourNewPassword,
-                      style: TextStyle(
+                      appLocalizations.enterYourNewPassword,
+                      style: const TextStyle(
                           fontSize: 22,
                           color: Colors.black87,
                           fontWeight: FontWeight.bold),
@@ -108,7 +108,7 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                     padding: const EdgeInsets.all(20),
                     child: MainTextField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        label: l10n.newPassword,
+                        label: appLocalizations.newPassword,
                         borderRadius: BorderRadius.circular(30),
                         fillColor: Colors.white,
                         controller: _passwordController,
@@ -116,14 +116,14 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                           if (text != null && text.length >= 8) {
                             return null;
                           }
-                          return l10n.entervalidpassword;
+                          return appLocalizations.entervalidpassword;
                         }),
                   ),
                   Container(
                     padding: const EdgeInsets.only(top: 20, right: 40),
                     child: Text(
-                      l10n.confirmNewPassword,
-                      style: TextStyle(
+                      appLocalizations.confirmNewPassword,
+                      style: const TextStyle(
                           fontSize: 22,
                           color: Colors.black87,
                           fontWeight: FontWeight.bold),
@@ -135,7 +135,7 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                         const EdgeInsets.only(bottom: 20, right: 20, left: 20),
                     child: MainTextField(
                       autovalidateMode: AutovalidateMode.onUserInteraction,
-                      label: l10n.confirmPassword,
+                      label: appLocalizations.confirmPassword,
                       borderRadius: BorderRadius.circular(30),
                       fillColor: Colors.white,
                       controller: _confirmPasswordController,
@@ -143,7 +143,7 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                         if (text != null && text == _passwordController.text) {
                           return null;
                         } else {
-                          return l10n.passwordnotmatch;
+                          return appLocalizations.passwordnotmatch;
                         }
                       },
                     ),
@@ -156,9 +156,9 @@ class _ChangePasswordProfilePageState extends State<ChangePasswordProfilePage> {
                           width: 1,
                           color: Colors.grey),
                     ),
-                    child:  Text(
-                      l10n.changePassword,
-                      style: TextStyle(color: Colors.black87),
+                    child: Text(
+                      appLocalizations.changePassword,
+                      style: const TextStyle(color: Colors.black87),
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {

@@ -41,14 +41,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               Container(
                   margin: const EdgeInsets.only(top: 200, right: 30),
                   child: Text(
-                    l10n.enterEmailToResetPassword,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    appLocalizations.enterEmailToResetPassword,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
                   )),
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(20),
                 child: MainTextField(
-                  label: l10n.email,
+                  label: appLocalizations.email,
                   fillColor: Colors.white,
                   borderRadius: BorderRadius.circular(30),
                   controller: _emailController,
@@ -56,7 +57,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     if (text != null && text.isValidEmail()) {
                       return null;
                     }
-                    return l10n.enterValidEmail;
+                    return appLocalizations.enterValidEmail;
                   },
                 ),
               ),
@@ -67,8 +68,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       style: BorderStyle.solid, color: Colors.grey),
                 ),
                 child: Text(
-                  l10n.sendEmail,
-                  style: TextStyle(color: Colors.black87),
+                  appLocalizations.sendEmail,
+                  style: const TextStyle(color: Colors.black87),
                 ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {}

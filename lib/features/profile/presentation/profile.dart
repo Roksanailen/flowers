@@ -40,8 +40,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 20,
                 ),
                 Text(
-                  l10n.WelcomeOurValuedCustomer,
-                  style: TextStyle(
+                  appLocalizations.welcomeOurValuedCustomer,
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black87,
                     fontWeight: FontWeight.bold,
@@ -64,10 +64,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       borderRadius: BorderRadius.all(Radius.circular(10)),
                       color: Colors.white,
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        l10n.createYourAccount,
-                        style: TextStyle(
+                        appLocalizations.createYourAccount,
+                        style: const TextStyle(
                           fontSize: 18,
                         ),
                       ),

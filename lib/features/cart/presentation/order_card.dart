@@ -52,7 +52,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        l10n.orderno,
+                        appLocalizations.orderno,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
@@ -69,7 +69,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        l10n.requeststatus,
+                        appLocalizations.requeststatus,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
@@ -77,10 +77,10 @@ class _OrderCardState extends State<OrderCard> {
                       ),
                       Text(
                         widget.order.status == 0
-                            ? l10n.pending
+                            ? appLocalizations.pending
                             : widget.order.status == 2
-                                ? l10n.rejected
-                                : l10n.completed,
+                                ? appLocalizations.rejected
+                                : appLocalizations.completed,
                         style: TextStyle(
                           fontSize: size.width * .036,
                         ),
@@ -90,7 +90,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        l10n.totalprice,
+                        appLocalizations.totalprice,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
@@ -111,7 +111,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        l10n.requestdate,
+                        appLocalizations.requestdate,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,

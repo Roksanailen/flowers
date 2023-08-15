@@ -96,7 +96,7 @@ class _HomeAdsListState extends State<HomeAdsList> {
                     alignment: Alignment.bottomCenter,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(l10n.ourOffers,
+                      child: Text(appLocalizations.ourOffers,
                           style: AppTextStyles.normal(
                               color: Colors.white, fontSize: 16)),
                     ),
