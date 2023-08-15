@@ -42,13 +42,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                       const SizedBox(
                         height: 20,
                       ),
-                      itemprofile('Name', snapshot.requireData.username,
+                      itemprofile(l10n.name, snapshot.requireData.username,
                           CupertinoIcons.person),
                       const SizedBox(height: 14),
-                      itemprofile('phone', snapshot.requireData.phone,
+                      itemprofile(l10n.phone, snapshot.requireData.phone,
                           CupertinoIcons.phone),
                       const SizedBox(height: 14),
-                      itemprofile('Email', snapshot.requireData.email,
+                      itemprofile(l10n.email, snapshot.requireData.email,
                           CupertinoIcons.mail),
                       const SizedBox(height: 20),
                       SizedBox(
@@ -63,8 +63,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                             primary: Colors.white70,
                             padding: const EdgeInsets.all(15),
                           ),
-                          child: const Text(
-                            'Change Password',
+                          child: Text(
+                            l10n.changePassword,
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -80,7 +80,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                                 context: context,
                                 builder: (_) => YesNoDialog(
                                     size: MediaQuery.of(context).size,
-                                    title: 'Are You Sure?',
+                                    title: l10n.areYouSure,
                                     onTapYes: () {
                                       GlobalFunctions().clearUserInfo();
                                       Navigator.of(_).pushReplacement(
@@ -93,8 +93,8 @@ class _ProfileEditState extends State<ProfileEdit> {
                             primary: Colors.deepPurple,
                             padding: const EdgeInsets.all(15),
                           ),
-                          child: const Text(
-                            'Log Out',
+                          child: Text(
+                            l10n.logOut,
                           ),
                         ),
                       ),

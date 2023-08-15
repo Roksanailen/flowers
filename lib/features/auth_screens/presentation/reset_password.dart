@@ -40,15 +40,15 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             children: [
               Container(
                   margin: const EdgeInsets.only(top: 200, right: 30),
-                  child: const Text(
-                    'Enter Email To Reset Password',
+                  child: Text(
+                    l10n.enterEmailToResetPassword,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )),
               const SizedBox(height: 20),
               Container(
                 padding: const EdgeInsets.all(20),
                 child: MainTextField(
-                  label: 'email',
+                  label: l10n.email,
                   fillColor: Colors.white,
                   borderRadius: BorderRadius.circular(30),
                   controller: _emailController,
@@ -56,7 +56,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     if (text != null && text.isValidEmail()) {
                       return null;
                     }
-                    return 'enter valid email';
+                    return l10n.enterValidEmail;
                   },
                 ),
               ),
@@ -66,8 +66,8 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   side: const BorderSide(
                       style: BorderStyle.solid, color: Colors.grey),
                 ),
-                child: const Text(
-                  'Send Email',
+                child: Text(
+                  l10n.sendEmail,
                   style: TextStyle(color: Colors.black87),
                 ),
                 onPressed: () {

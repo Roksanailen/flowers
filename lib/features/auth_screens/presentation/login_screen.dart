@@ -77,8 +77,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       Container(
                         padding: const EdgeInsets.only(right: 200),
-                        child: const Text(
-                          'Username',
+                        child: Text(
+                          l10n.username,
                           style: TextStyle(fontSize: 20, color: Colors.black87),
                         ),
                       ),
@@ -91,17 +91,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           fillColor: Colors.white,
                           textInputAction: TextInputAction.next,
                           borderRadius: BorderRadius.circular(30),
-                          hint: 'Enter a username  ',
+                          hint: l10n.enterAUsername,
                           validator: (text) => text != null && text.length > 3
                               ? null
-                              : 'please add a valid username'),
+                              : l10n.pleaseAddAValidUsername),
                       const SizedBox(
                         height: 10,
                       ),
                       Container(
                         padding: const EdgeInsets.only(right: 200),
-                        child: const Text(
-                          'Password',
+                        child: Text(
+                          l10n.password,
                           style: TextStyle(fontSize: 20, color: Colors.black87),
                         ),
                       ),
@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         valueListenable: isPassword,
                         builder: (_, bool isPasswordValue, child) {
                           return MainTextField(
-                            hint: 'Password',
+                            hint: l10n.password,
                             textInputAction: TextInputAction.go,
                             onSubmitted: (value) {
                               authBloc.add(LoginEvent(
@@ -128,11 +128,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: isPasswordValue
                                     ? const Icon(
                                         Icons.visibility_off,
-                                        key: Key("show"),
+                                        key: Key(l10n.show),
                                       )
                                     : const Icon(
                                         Icons.remove_red_eye,
-                                        key: Key("notShow"),
+                                        key: Key(l10n.notshow),
                                       ),
                               ),
                             ),
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             borderRadius: BorderRadius.circular(30),
                             validator: (text) => text != null && text.length > 6
                                 ? null
-                                : 'please add a valid password',
+                                : l10n.pleaseAddAValidPassword,
                           );
                         },
                       ),
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   password: passwordController.text));
                             }
                           },
-                          title: 'Login',
+                          title: l10n.login,
                           width: 80,
                           height: 40,
                           fontColor: Colors.black,
@@ -173,8 +173,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            'Dont have an account? ',
+                          Text(
+                            l10n.dontHaveAnAccount,
                             style: TextStyle(fontSize: 15, color: Colors.white),
                           ),
                           InkWell(
@@ -182,8 +182,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => RegisterScreen()));
                             },
-                            child: const Text(
-                              'register',
+                            child: Text(
+                              l10n.register,
                               style: TextStyle(
                                   fontSize: 15, color: Colors.black87),
                             ),
@@ -196,8 +196,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
-                            ' forget the password? ',
+                          Text(
+                            l10n.ForgetThePassword,
                             style: TextStyle(fontSize: 15, color: Colors.white),
                           ),
                           InkWell(
@@ -207,8 +207,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 return const ChangePasswordPage();
                               }));
                             },
-                            child: const Text(
-                              'click here',
+                            child: Text(
+                              l10n.clickHere,
                               style: TextStyle(
                                   fontSize: 15, color: Colors.black87),
                             ),
@@ -224,7 +224,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => const MainScreen()));
                           },
-                          child: const Text('Continue as guest'))
+                          child: const Text(l10n.continueAsGuest))
                     ],
                   ),
                 ),

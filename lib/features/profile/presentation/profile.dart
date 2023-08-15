@@ -39,8 +39,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Text(
-                  ' Welcome our valued customer',
+                Text(
+                  l10n.WelcomeOurValuedCustomer,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black87,
@@ -66,7 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     child: const Center(
                       child: Text(
-                        'Create your Account',
+                        l10n.createYourAccount,
                         style: TextStyle(
                           fontSize: 18,
                         ),

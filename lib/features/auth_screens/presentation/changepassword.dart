@@ -43,8 +43,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             children: [
               Container(
                 padding: const EdgeInsets.only(top: 200, right: 40),
-                child: const Text(
-                  'Enter your New Password',
+                child: Text(
+                  l10n.enterYourNewPassword,
                   style: TextStyle(
                       fontSize: 22,
                       color: Colors.black87,
@@ -56,7 +56,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                 padding: const EdgeInsets.all(20),
                 child: MainTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    label: 'confirm Password',
+                    label: l10n.confirmPassword,
                     borderRadius: BorderRadius.circular(30),
                     fillColor: Colors.white,
                     controller: _passwordController,
@@ -64,14 +64,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                       if (text != null && text.length > 8) {
                         return null;
                       }
-                      return 'enterValidPassword';
+                      return l10n.entervalidpassword;
                     }),
               ),
               Container(
                 padding: const EdgeInsets.only(bottom: 20, right: 20, left: 20),
                 child: MainTextField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  label: 'confirmPassword',
+                  label: l10n.confirmpassword,
                   borderRadius: BorderRadius.circular(30),
                   fillColor: Colors.white,
                   controller: _confirmPasswordController,
@@ -79,7 +79,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     if (text != null && text == _passwordController.text) {
                       return null;
                     } else {
-                      return 'passwordNotMatch';
+                      return l10n.passwordnotmatch;
                     }
                   },
                 ),
@@ -90,8 +90,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   side: const BorderSide(
                       style: BorderStyle.solid, width: 1, color: Colors.grey),
                 ),
-                child: const Text(
-                  'next',
+                child:  Text(
+                  l10n.next,
                   style: TextStyle(color: Colors.black87),
                 ),
                 onPressed: () {

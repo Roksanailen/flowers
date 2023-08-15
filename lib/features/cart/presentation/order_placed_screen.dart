@@ -41,11 +41,11 @@ class _OrderPlacedScreenState extends State<OrderPlacedScreen> {
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  'Your Order Is Placed Successfully',
+                  l10n.yourOrderIsPlacedSuccessfully,
                 ),
               ),
               ElevatedButton(
-                  child: const Text('Go To Home'),
+                  child: Text(l10n.goToHome),
                   onPressed: () {
                     Navigator.of(context).pushAndRemoveUntil(
                         MaterialPageRoute(builder: (context) {

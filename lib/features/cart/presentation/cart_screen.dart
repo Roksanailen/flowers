@@ -18,22 +18,22 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   final List<String> color = [
-    "yellow",
-    "Red",
-    "white ",
-    "pink",
-    "blue",
-    "purple"
+    l10n.yellow,
+    l10n.red,
+    l10n.white,
+    l10n.pink,
+    l10n.blue,
+    l10n.purple
   ];
 
-  final List<String> kind = ["tulip", "roze", "lily", "calla"];
+  final List<String> kind = [l10n.tulip, l10n.roze, l10n.lily, l10n.calla];
 
   final List<String> occasion = [
-    "blessing",
-    "Newborn baby",
-    "Birthday",
-    "Valentine",
-    "graduation"
+    l10n.blessing,
+    l10n.newbornBaby,
+    l10n.birthday,
+    l10n.valentine,
+    l10n.graduation
   ];
   late final CartBloc cartBloc;
   late AppLocalizations appLocalizations;

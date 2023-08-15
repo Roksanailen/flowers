@@ -68,8 +68,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Container(
                           margin: const EdgeInsets.only(top: 40, right: 40),
                           alignment: Alignment.center,
-                          child: const Text(
-                            'Register a new account',
+                          child: Text(
+                            l10n.registerANewAccount,
                             style:
                                 TextStyle(fontSize: 25, color: Colors.black87),
                           ),
@@ -80,24 +80,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         MainTextField(
                           controller: usernameController,
                           fillColor: Colors.white,
-                          hint: 'UserName',
+                          hint: l10n.username,
                           borderRadius: BorderRadius.circular(30),
                           validator: (text) => text != null && text.length > 3
                               ? null
-                              : 'enter a valid username',
+                              : l10n.enterAValidUsername,
                         ),
                         const SizedBox(
                           height: 20,
                         ),
                         MainTextField(
-                          hint: 'Email',
+                          hint: l10n.email,
                           controller: emailController,
                           fillColor: Colors.white,
                           borderRadius: BorderRadius.circular(30),
                           validator: (email) =>
                               email != null && email.isValidEmail()
                                   ? null
-                                  : 'please enter a valid email',
+                                  : l10n.pleaseEnterAValidEmail,
                         ),
                         const SizedBox(
                           height: 20,
@@ -105,12 +105,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         MainTextField(
                           controller: phoneController,
                           fillColor: Colors.white,
-                          hint: 'Phone Number',
+                          hint: l10n.phoneNumber,
                           borderRadius: BorderRadius.circular(30),
                           validator: (text) =>
                               text != null && text.isValidPhone()
                                   ? null
-                                  : 'please enter a valid phone',
+                                  : l10n.pleaseEnterAValidPhone,
                         ),
                         const SizedBox(
                           height: 20,
@@ -119,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           valueListenable: isPassword,
                           builder: (_, bool isPasswordValue, child) {
                             return MainTextField(
-                              hint: 'Password',
+                              hint: l10n.password,
                               suffixIcon: GestureDetector(
                                 onTap: () {
                                   isPassword.value = !isPasswordValue;
@@ -129,11 +129,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: isPasswordValue
                                       ? const Icon(
                                           Icons.visibility_off,
-                                          key: Key("show"),
+                                          key: Key(l10n.show),
                                         )
                                       : const Icon(
                                           Icons.remove_red_eye,
-                                          key: Key("notShow"),
+                                          key: Key(l10n.notshow),
                                         ),
                                 ),
                               ),
@@ -146,7 +146,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               validator: (text) =>
                                   text != null && text.length > 6
                                       ? null
-                                      : 'please add a valid password',
+                                      : l10n.pleaseAddAValidPassword,
                             );
                           },
                         ),
@@ -157,7 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           valueListenable: isPassword,
                           builder: (_, bool isPasswordValue, child) {
                             return MainTextField(
-                              hint: 'Consfirm Password',
+                              hint: l10n.consfirmPassword,
                               suffixIcon: GestureDetector(
                                 onTap: () {
                                   isPassword.value = !isPasswordValue;
@@ -167,11 +167,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   child: isPasswordValue
                                       ? const Icon(
                                           Icons.visibility_off,
-                                          key: Key("show"),
+                                          key: Key(l10n.show),
                                         )
                                       : const Icon(
                                           Icons.remove_red_eye,
-                                          key: Key("notShow"),
+                                          key: Key(l10n.notshow),
                                         ),
                                 ),
                               ),
@@ -184,7 +184,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               validator: (text) => text != null &&
                                       text == (passwordController.text)
                                   ? null
-                                  : 'passwords isn\'t matched',
+                                  : l10n.passwordsIsntMatched,
                             );
                           },
                         ),
@@ -203,7 +203,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       username: usernameController.text));
                                 }
                               },
-                              title: 'register',
+                              title: l10n.register,
                               height: 40,
                               width: 80,
                               color: Colors.white,

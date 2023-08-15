@@ -52,7 +52,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        'orderNo: #',
+                        l10n.orderno,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
@@ -69,7 +69,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        'requestStatus: ',
+                        l10n.requeststatus,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
@@ -77,10 +77,10 @@ class _OrderCardState extends State<OrderCard> {
                       ),
                       Text(
                         widget.order.status == 0
-                            ? 'pending'
+                            ? l10n.pending
                             : widget.order.status == 2
-                                ? 'rejected'
-                                : 'completed',
+                                ? l10n.rejected
+                                : l10n.completed,
                         style: TextStyle(
                           fontSize: size.width * .036,
                         ),
@@ -90,7 +90,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        'totalPrice: ',
+                        l10n.totalprice,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
@@ -111,7 +111,7 @@ class _OrderCardState extends State<OrderCard> {
                   Row(
                     children: [
                       Text(
-                        'requestDate: ',
+                        l10n.requestdate,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: size.width * .036,
