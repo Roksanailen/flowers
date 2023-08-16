@@ -15,6 +15,8 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     on<GetTypesEvent>(_mapGetTypesEventToState);
     on<GetCategoriesEvent>(_mapGetCategoriesEventToState);
     on<GetProductsEvent>(_mapGetProductsEventToState);
+    on<GetColorsEvent>((event, emit) async {});
+    on<GetOccasionsEvent>((event, emit) async {});
   }
 
   FutureOr<void> _mapGetProductsEventToState(
@@ -26,7 +28,12 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         (l) =>
             emit(state.copyWith(getProductsStatus: GetProductsStatus.failed)),
         (r) => emit(state.copyWith(
-            getProductsStatus: GetProductsStatus.success, products: r.data!)));
+            colors: state.colors.isNotEmpty
+                ? null
+                : r.data!.map((e) => e.color).toSet().toList(),
+            occasion: r.data!.map((e) => e.occasion).toSet().toList(),
+            getProductsStatus: GetProductsStatus.success,
+            products: r.data!)));
   }
 
   FutureOr<void> _mapGetCategoriesEventToState(event, emit) async {

@@ -10,8 +10,8 @@ part 'language_state.dart';
 
 class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
   List<Locale> supportedLocales = [
-    const Locale('ar', ''),
-    const Locale('en', ''),
+    const Locale('ar', 'ar'),
+    const Locale('en', 'en'),
   ];
   LanguageBloc() : super(const LanguageState()) {
     on<ToggleLanguageEvent>(_mapChangeLanguageState);
@@ -23,6 +23,7 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
       InitLanguageEvent event, Emitter<LanguageState> emit) async {
     emit(state.copyWith(status: LanguageManagerStatus.loading));
     SharedPreferences pref = await SharedPreferences.getInstance();
+
     if (pref.containsKey('languageApp')) {
       emit(
         state.copyWith(
@@ -30,7 +31,6 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
           locale: Locale(pref.getString('languageApp')!),
         ),
       );
-      return;
     } else {
       String localeName = Platform.localeName;
       for (var item in supportedLocales) {
@@ -42,7 +42,6 @@ class LanguageBloc extends Bloc<LanguageEvent, LanguageState> {
               status: LanguageManagerStatus.succ,
             ),
           );
-          return;
         }
       }
     }

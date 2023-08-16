@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flowers/core/models/products_model.dart';
+import 'package:flowers/dependency_injection.dart';
 
+import '../../../../core/bloc/language_bloc.dart';
 import '../../../products/requests/products_requests.dart';
 
 part 'home_event.dart';
@@ -18,8 +20,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _mapGetFlowersEventToState(event, emit) async {
     emit(state.copyWith(getFlowersStatus: GetFlowersStatus.loading));
-    final result = await ProductsRepository()
-        .getProductsByCategory(GetProductsParams(typeId: 8));
+    final result = await ProductsRepository().getProductsByCategory(
+        GetProductsParams(
+            typeId: serviceLocator<LanguageBloc>().state.languageCode == 'ar'
+                ? 11
+                : 8));
     result.fold(
         (l) => emit(state.copyWith(getFlowersStatus: GetFlowersStatus.failed)),
         (r) => emit(state.copyWith(
@@ -28,8 +33,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _mapGetPlantsEventToState(event, emit) async {
     emit(state.copyWith(getPlantsStatus: GetPlantsStatus.loading));
-    final result = await ProductsRepository()
-        .getProductsByCategory(GetProductsParams(typeId: 10));
+    final result = await ProductsRepository().getProductsByCategory(
+        GetProductsParams(
+            typeId: serviceLocator<LanguageBloc>().state.languageCode == 'ar'
+                ? 13
+                : 10));
     result.fold(
         (l) => emit(state.copyWith(getPlantsStatus: GetPlantsStatus.failed)),
         (r) => emit(state.copyWith(
@@ -38,8 +46,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> _mapGetGiftsEventToState(event, emit) async {
     emit(state.copyWith(getGiftsStatus: GetGiftsStatus.loading));
-    final result = await ProductsRepository()
-        .getProductsByCategory(GetProductsParams(typeId: 9));
+    final result = await ProductsRepository().getProductsByCategory(
+        GetProductsParams(
+            typeId: serviceLocator<LanguageBloc>().state.languageCode == 'ar'
+                ? 12
+                : 9));
     result.fold(
         (l) => emit(state.copyWith(getGiftsStatus: GetGiftsStatus.failed)),
         (r) => emit(state.copyWith(

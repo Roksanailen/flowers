@@ -12,23 +12,28 @@ class ProductsState {
   final GetTypesStatus getTypesStatus;
   final GetCategoriesStatus getCategoriesStatus;
   final GetProductsStatus getProductsStatus;
+  final List<String?> occasion;
+  final List<String?> colors;
 
-  ProductsState({
-    this.categories = const [],
-    this.types = const [],
+  ProductsState(
+      {this.colors = const [],
+      this.occasion = const [],
+      this.categories = const [],
+      this.types = const [],
       this.products = const [],
-    this.getTypesStatus = GetTypesStatus.init,
-    this.getCategoriesStatus = GetCategoriesStatus.init,
-      this.getProductsStatus = GetProductsStatus.init
-  });
+      this.getTypesStatus = GetTypesStatus.init,
+      this.getCategoriesStatus = GetCategoriesStatus.init,
+      this.getProductsStatus = GetProductsStatus.init});
 
   ProductsState copyWith({
     List<CategoryDataModel>? categories,
-    List<Types>? types,
     List<ProductModel>? products,
+    List<Types>? types,
     GetTypesStatus? getTypesStatus,
     GetCategoriesStatus? getCategoriesStatus,
     GetProductsStatus? getProductsStatus,
+    List<String?>? occasion,
+    List<String?>? colors,
   }) {
     return ProductsState(
       categories: categories ?? this.categories,
@@ -37,6 +42,8 @@ class ProductsState {
       getTypesStatus: getTypesStatus ?? this.getTypesStatus,
       getCategoriesStatus: getCategoriesStatus ?? this.getCategoriesStatus,
       getProductsStatus: getProductsStatus ?? this.getProductsStatus,
+      occasion: occasion ?? this.occasion,
+      colors: colors ?? this.colors,
     );
   }
 }

@@ -1,6 +1,8 @@
+import 'package:flowers/core/toaster.dart';
 import 'package:flowers/core/widgets/cached_network_image.dart';
 import 'package:flowers/core/widgets/main_button.dart';
 import 'package:flowers/dependency_injection.dart';
+import 'package:flowers/features/cart/presentation/bloc/order_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../../core/bloc/cart_bloc.dart';
 import '../../products/presentation/product_details.dart';
+import 'order_placed_screen.dart';
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -57,7 +60,18 @@ class _CartScreenState extends State<CartScreen> {
           create: (context) => cartBloc,
           child: BlocConsumer<CartBloc, CartState>(
             bloc: cartBloc,
-            listener: (context, state) {},
+            listener: (context, state) {
+              if (state.status == GetOrdersStatus.loading) {
+                Toaster.showLoading();
+              } else if (state.status == GetOrdersStatus.success) {
+                Toaster.closeLoading();
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const OrderPlacedScreen()));
+              } else if (state.status == GetOrdersStatus.failed) {
+                Toaster.closeLoading();
+                Toaster.showToast(appLocalizations.failedPleaseTryAgain);
+              }
+            },
             builder: (context, state) {
               return state.products.isEmpty
                   ? const Center(
@@ -139,8 +153,8 @@ class _CartScreenState extends State<CartScreen> {
                                             InkWell(
                                                 child: IconButton(
                                                     onPressed: () {
-                                                      serviceLocator<CartBloc>()
-                                                          .add(UpdateCartEvent(
+                                                      cartBloc.add(
+                                                          UpdateCartEvent(
                                                               product: state
                                                                       .products[
                                                                   index]));

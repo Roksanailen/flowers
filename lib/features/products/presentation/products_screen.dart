@@ -26,29 +26,6 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  final List<String> color = [
-    "yellow",
-    "Red",
-    "white ",
-    "pink",
-    "blue",
-    "purple",
-  ];
-
-  final List<String> kind = [
-    "tulip",
-    "roze",
-    "lily",
-    "calla",
-  ];
-
-  final List<String> occasion = [
-    "blessing",
-    "Newborn baby",
-    "Birthday",
-    "Valentine",
-    "graduation",
-  ];
   late final ProductsBloc productsBloc;
   late AppLocalizations appLocalizations;
   @override
@@ -62,8 +39,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
     appLocalizations = AppLocalizations.of(context)!;
     productsBloc.add(GetProductsEvent(
         params: GetProductsParams(
-            cagtegoryId: widget.categoryId,
-            localeCode: appLocalizations.localeName)));
+      cagtegoryId: widget.categoryId,
+    )));
     super.didChangeDependencies();
   }
 
@@ -136,143 +113,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   ),
                                 ),
                               ),
-                              const SizedBox(
-                                width: 50,
-                              ),
-                              Padding(
-                                  padding: const EdgeInsets.only(right: 20.0),
-                                  child: IconButton(
-                                    icon: const Icon(Icons.filter_alt_sharp),
-                                    onPressed: () {
-                                      showBottomSheet(
-                                        context: context,
-                                        builder: (context) =>
-                                            SingleChildScrollView(
-                                          child: Container(
-                                            padding: const EdgeInsets.all(10),
-                                            height: 1000,
-                                            width: 1000,
-                                            decoration: const BoxDecoration(
-                                                color: Colors.white70,
-                                                borderRadius: BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(50),
-                                                    topRight:
-                                                        Radius.circular(50))),
-                                            child: Column(
-                                              children: [
-                                                const Text("Color"),
-                                                const SizedBox(height: 10),
-                                                Container(
-                                                    width: 300,
-                                                    height: 7,
-                                                    color: Colors.pink[100]),
-                                                SizedBox(
-                                                  height: 150,
-                                                  child: ListView.builder(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10),
-                                                        margin: const EdgeInsets
-                                                                .symmetric(
-                                                            horizontal: 30,
-                                                            vertical: 10),
-                                                        child: Text(
-                                                          color[index],
-                                                          style: const TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                      );
-                                                    },
-                                                    itemCount: color.length,
-                                                    shrinkWrap: true,
-                                                  ),
-                                                ),
-                                                const SizedBox(
-                                                  height: 10,
-                                                ),
-                                                const Text("Kind"),
-                                                const SizedBox(height: 10),
-                                                Container(
-                                                    width: 300,
-                                                    height: 7,
-                                                    color: Colors.pink[100]),
-                                                SizedBox(
-                                                  height: 150,
-                                                  child: ListView.builder(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10),
-                                                        margin: const EdgeInsets
-                                                                .symmetric(
-                                                            horizontal: 30,
-                                                            vertical: 10),
-                                                        child: Text(
-                                                          kind[index],
-                                                          style: const TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                      );
-                                                    },
-                                                    itemCount: kind.length,
-                                                    shrinkWrap: true,
-                                                  ),
-                                                ),
-                                                const Text("associen"),
-                                                const SizedBox(height: 10),
-                                                Container(
-                                                    width: 300,
-                                                    height: 7,
-                                                    color: Colors.pink[100]),
-                                                SizedBox(
-                                                  height: 200,
-                                                  child: ListView.builder(
-                                                    scrollDirection:
-                                                        Axis.horizontal,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(10),
-                                                        margin: const EdgeInsets
-                                                                .symmetric(
-                                                            horizontal: 30,
-                                                            vertical: 60),
-                                                        child: Text(
-                                                          occasion[index],
-                                                          style: const TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ),
-                                                      );
-                                                    },
-                                                    itemCount: occasion.length,
-                                                    shrinkWrap: true,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  )),
                             ],
                           ),
                         ],

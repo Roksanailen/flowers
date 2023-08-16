@@ -20,3 +20,7 @@ class GetProductsEvent extends ProductsEvent {
     required this.params,
   });
 }
+
+class GetOccasionsEvent extends ProductsEvent {}
+
+class GetColorsEvent extends ProductsEvent {}

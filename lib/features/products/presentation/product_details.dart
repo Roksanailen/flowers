@@ -76,7 +76,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               Padding(
                 padding: const EdgeInsets.only(left: 25.0, top: 25),
                 child: Text(
-                  'Description',
+                  appLocalizations.description,
                   style: AppTextStyles.bold(fontSize: 18),
                 ),
               ),

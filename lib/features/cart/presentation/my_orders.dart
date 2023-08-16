@@ -54,16 +54,22 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                         orderBloc.add(GetMyOrdersEvent());
                       }),
                     )
-                  : ListView.builder(
-                      itemCount: state.orders.length,
-                      itemBuilder: (context, index) {
-                        return OrderCard(
-                            order: state.orders[index],
-                            onTap: () {
-                              orderBloc.add(OrderCompletedEvent(
-                                  id: state.orders[index].id));
-                            });
+                  : RefreshIndicator(
+                      onRefresh: () {
+                        orderBloc.add(GetMyOrdersEvent());
+                        return Future.value();
                       },
+                      child: ListView.builder(
+                        itemCount: state.orders.length,
+                        itemBuilder: (context, index) {
+                          return OrderCard(
+                              order: state.orders[index],
+                              onTap: () {
+                                orderBloc.add(OrderCompletedEvent(
+                                    id: state.orders[index].id));
+                              });
+                        },
+                      ),
                     );
         },
       ),

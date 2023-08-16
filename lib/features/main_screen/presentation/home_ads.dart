@@ -18,7 +18,7 @@ class HomeAdsList extends StatefulWidget {
 }
 
 class _HomeAdsListState extends State<HomeAdsList> {
-  final PageController pageController = PageController(initialPage: 200);
+  PageController pageController = PageController(initialPage: 200);
   late AppLocalizations appLocalizations;
   late Size size;
   final indexValue = ValueNotifier<double>(0);
