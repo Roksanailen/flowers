@@ -22,7 +22,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(getFlowersStatus: GetFlowersStatus.loading));
     final result = await ProductsRepository().getProductsByCategory(
         GetProductsParams(
-            typeId: serviceLocator<LanguageBloc>().state.languageCode == 'ar'
+            typeId: serviceLocator<LanguageBloc>().state.locale?.languageCode ==
+                    'ar'
                 ? 11
                 : 8));
     result.fold(
@@ -35,7 +36,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(getPlantsStatus: GetPlantsStatus.loading));
     final result = await ProductsRepository().getProductsByCategory(
         GetProductsParams(
-            typeId: serviceLocator<LanguageBloc>().state.languageCode == 'ar'
+            typeId: serviceLocator<LanguageBloc>().state.locale?.languageCode ==
+                    'ar'
                 ? 13
                 : 10));
     result.fold(
@@ -48,7 +50,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(getGiftsStatus: GetGiftsStatus.loading));
     final result = await ProductsRepository().getProductsByCategory(
         GetProductsParams(
-            typeId: serviceLocator<LanguageBloc>().state.languageCode == 'ar'
+            typeId: serviceLocator<LanguageBloc>().state.locale?.languageCode ==
+                    'ar'
                 ? 12
                 : 9));
     result.fold(
