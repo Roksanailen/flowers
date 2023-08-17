@@ -23,4 +23,10 @@ class GetProductsEvent extends ProductsEvent {
 
 class GetOccasionsEvent extends ProductsEvent {}
 
+class UpdateScreenEvent extends ProductsEvent {
+  final ProductModel product;
+  final bool add;
+  UpdateScreenEvent({required this.product, this.add = false});
+}
+
 class GetColorsEvent extends ProductsEvent {}

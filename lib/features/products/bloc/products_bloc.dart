@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flowers/core/bloc/cart_bloc.dart';
+import 'package:flowers/dependency_injection.dart';
 import 'package:flowers/features/products/requests/products_requests.dart';
 
 import '../../../core/models/categories_response_model.dart';
@@ -17,6 +19,18 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     on<GetProductsEvent>(_mapGetProductsEventToState);
     on<GetColorsEvent>((event, emit) async {});
     on<GetOccasionsEvent>((event, emit) async {});
+    on<UpdateScreenEvent>((event, emit) async {
+      if (serviceLocator<CartBloc>().state.products.contains(event.product)) {
+        emit(state.copyWith(
+            products: List.of(state.products)
+              ..removeWhere((element) => element.id == event.product.id)));
+      } else {
+        emit(state.copyWith(
+            products: List.of(state.products)
+              ..add(event.product)
+              ..map((e) => e).toSet().toList()));
+      }
+    });
   }
 
   FutureOr<void> _mapGetProductsEventToState(
@@ -27,13 +41,18 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     result.fold(
         (l) =>
             emit(state.copyWith(getProductsStatus: GetProductsStatus.failed)),
-        (r) => emit(state.copyWith(
-            colors: state.colors.isNotEmpty
-                ? null
-                : r.data!.map((e) => e.color).toSet().toList(),
-            occasion: r.data!.map((e) => e.occasion).toSet().toList(),
-            getProductsStatus: GetProductsStatus.success,
-            products: r.data!)));
+        (r) {
+      emit(state.copyWith(
+          colors: state.colors.isNotEmpty
+              ? null
+              : r.data!.map((e) => e.color).toSet().toList(),
+          occasion: r.data!.map((e) => e.occasion).toSet().toList(),
+          getProductsStatus: GetProductsStatus.success,
+          products: r.data!));
+      for (var element in state.products) {
+        add(UpdateScreenEvent(product: element));
+      }
+    });
   }
 
   FutureOr<void> _mapGetCategoriesEventToState(event, emit) async {

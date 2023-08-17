@@ -390,6 +390,8 @@ class _StoreScreenState extends State<StoreScreen> {
                                                                               .runCartAnimation();
                                                                           serviceLocator<CartBloc>()
                                                                               .add(UpdateCartEvent(product: state.products[index]));
+                                                                          productsBloc
+                                                                              .add(UpdateScreenEvent(product: state.products[index]));
                                                                         },
                                                                         icon: const Icon(
                                                                             Icons.add)))

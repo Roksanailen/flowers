@@ -228,6 +228,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                                                     product: state
                                                                             .products[
                                                                         index]));
+                                                            productsBloc.add(
+                                                                UpdateScreenEvent(
+                                                                    product: state
+                                                                            .products[
+                                                                        index]));
                                                           },
                                                           icon: const Icon(
                                                               Icons.add)))
