@@ -30,8 +30,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CreateOrderEvent>((CreateOrderEvent event, emit) async {
       emit(state.copyWith(status: GetOrdersStatus.loading));
       final result = await CartRequestsRepository().createOrder(event.params);
-      result.fold((l) => emit(state.copyWith(status: GetOrdersStatus.failed)),
-          (r) => emit(state.copyWith(status: GetOrdersStatus.success)));
+      result.fold(
+          (l) => emit(state.copyWith(status: GetOrdersStatus.failed)),
+          (r) => emit(
+              state.copyWith(status: GetOrdersStatus.success, products: [])));
     });
   }
 }

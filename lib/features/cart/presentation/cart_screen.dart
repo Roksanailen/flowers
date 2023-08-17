@@ -155,12 +155,13 @@ class _CartScreenState extends State<CartScreen> {
                                                     onPressed: () {
                                                       cartBloc.add(
                                                           UpdateCartEvent(
+                                                              isDelete: true,
                                                               product: state
                                                                       .products[
                                                                   index]));
                                                     },
-                                                    icon:
-                                                        const Icon(Icons.add)))
+                                                    icon: const Icon(
+                                                        Icons.remove)))
                                           ],
                                         ),
                                       ),
